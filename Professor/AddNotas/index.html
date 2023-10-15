@@ -124,13 +124,53 @@
         
         <div class="homi">
 
+            <form id="FormNotas" method="post">
+
+                
+               <h4 class="aa" style="color: #ffffff;">Inserir notas N1</h4>   
+
+                <div class="form__group field">
+                    <input type="input" class="form__field" placeholder="Nome do Aluno" required="" readonly>
+                    <label for="name" class="form__label">Nome do Aluno</label>
+                </div>
+
+                <div class="form__group field">
+                    <input type="number" class="form__field" placeholder="Rm do Aluno" required="" readonly>
+                    <label for="name" class="form__label">Rm do Aluno</label>
+                </div>
+
+                <div class="form__group field" style="width: 40%;">
+                    <input type="date" class="form__field" placeholder="Data da N1" required="">
+                    <label for="name" class="form__label">Data N1</label>
+                </div>
+
+                <div class="form__group field" style="width: 40%; left:20%;">
+                    <input type="number" class="form__field" placeholder="Nota da N1" required="">
+                    <label for="name" class="form__label">Nota N1</label>
+                    
+                </div>
+                
+
+                <div class="form__group field">
+                    <center><button class="buttonn">
+                        Proximo aluno
+                    </button></center>
+
+                </div>
+
+
+
+
+
+            </form>
+
            
           
         
      
 
 
-
+<div class="blure">
   <div id="buttons">
     <button class="bn5" id="Mostra">Add N1</button>
     <button class="bn5" id="Mostra">Add N2</button>
@@ -220,7 +260,7 @@
   </table> 
 
  </div>
-
+</div>
 
  
 
@@ -244,13 +284,6 @@
         searchBtn.addEventListener("click", () => {
             sidebar.classList.remove("close");
         })
-
-        document.querySelector("#Mostra").addEventListener("click",function(){
-  document.querySelector(".popup").classList.add("active");
-});
-document.querySelector(".popup .close-btn").addEventListener("click",function(){
-  document.querySelector(".popup").classList.remove("active");
-});
 
         function irParaPagina(pagina) {
         // Redirecionar para a página desejada
@@ -276,6 +309,21 @@ document.querySelector(".popup .close-btn").addEventListener("click",function(){
             }
         }
 
+        document.addEventListener('DOMContentLoaded', function () {
+            // Função para mostrar o formulário ao clicar no botão "Add N1"
+            function mostrarFormulario() {
+                var formNotas = document.getElementById('FormNotas');
+                formNotas.style.opacity = 1;
+                document.querySelector('.blure').classList.add('blur');
+                formNotas.classList.add('slide-in-elliptic-top-fwd');
+            }
+
+            // Adiciona um ouvinte de evento ao botão "Add N1"
+            var botaoAddN1 = document.getElementById('Mostra');
+            botaoAddN1.addEventListener('click', mostrarFormulario);
+        });
+
+
         // Adicione um ouvinte de evento ao botão de alternância de tema, se necessário
         const themeToggleButton = document.querySelector('.theme-toggle-button');
 
@@ -293,6 +341,9 @@ document.querySelector(".popup .close-btn").addEventListener("click",function(){
 
             }
         });
+
+                    // Função para mostrar o formulário ao clicar no botão "Add N1"
+
 
 
 

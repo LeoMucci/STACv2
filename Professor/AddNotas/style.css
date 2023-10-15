@@ -725,6 +725,7 @@ table th {
   margin-bottom: 20px;
   justify-content: end;
   display: flex;
+  z-index: 1;
 }
 
 .bn5{
@@ -829,3 +830,157 @@ table th {
 
 
 }
+
+#FormNotas {
+
+  opacity: 0;
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background-color: var(--cont-color);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+  align-items: center;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  animation: var(--tran-04);
+  
+
+}
+
+#FormNotas.slide-in-elliptic-top-fwd {
+  -webkit-animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+ 
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 17px;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 400;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #b20000, #971108);
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+.tituloNotas{
+
+  font-weight: 400;
+
+
+
+}
+.aa {
+  margin: auto;
+
+}
+
+.buttonn {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #b20000;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #b20000;
+}
+
+.buttonn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #b20000;
+  box-shadow: 4px 5px 17px -4px #b20000;
+}
+
+.buttonn::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #b20000;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.buttonn:hover::before {
+  width: 250%;
+}
+
+.blur {
+  filter: blur(5px); /* Ajuste o valor conforme necessário */
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
