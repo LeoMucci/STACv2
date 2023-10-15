@@ -725,6 +725,7 @@ table th {
   margin-bottom: 20px;
   justify-content: end;
   display: flex;
+  z-index: 1;
 }
 
 .bn5{
@@ -827,5 +828,99 @@ table th {
 
   padding: 60px;
 
+
+}
+
+#FormNotas {
+
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background-color: var(--cont-color);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+  align-items: center;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+
+}
+
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+ 
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 17px;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 400;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #b20000, #971108);
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+.tituloNotas{
+
+  font-weight: 400;
+
+
+
+}
+.aa {
+  margin: auto;
 
 }
