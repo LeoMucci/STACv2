@@ -263,8 +263,7 @@
 
             </form>
 
-           
-          
+        
         
      
 
@@ -272,10 +271,10 @@
 <div class="blure">
   <div id="buttons">
     <button class="bn5" id="Mostra">Add N1</button>
-    <button class="bn5" id="Mostra">Add N2</button>
-    <button class="bn5">Add N3</button>
-    <button class="bn5">Add N4</button>
-    <button class="bn5">Add N5</button>
+    <button class="bn5" id="Mostra2">Add N2</button>
+    <button class="bn5" id="Mostra3">Add N3</button>
+    <button class="bn5" id="Mostra4">Add N4</button>
+    <button class="bn5" id="Mostra5">Add N5</button>
   </div>
   
   <table>
@@ -418,6 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
     botaoAddN1.addEventListener('click', mostrarFormulario);
 });
 
+
 // Adicione um ouvinte de evento ao botão de alternância de tema, se necessário
 const themeToggleButton = document.querySelector('.theme-toggle-button');
 
@@ -497,6 +497,7 @@ function validateForm() {
     document.getElementsByClassName("step")[currentTab].classList.add("finish");
     return true;
 }
+
 
 
 
