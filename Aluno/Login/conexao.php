@@ -39,7 +39,7 @@
        if($rowAluno == 1){
          header("location: ../Home/index.html");
        }elseif($rowProf == 1){
-         header("location: .  ./Professor/HomeP/index.html");
+         header("location: ../Professor/HomeP/index.html");
        } else{
            echo "<script>alert(\"CPF ou Senha Incorretos !!!\")
            window.location='index.html';;</script>";
