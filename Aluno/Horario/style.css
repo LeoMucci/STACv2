@@ -671,3 +671,20 @@ table th {
 .homi {
   padding: 60px;
 }
+
+@media (max-width: 600px) {
+  table, th, td {
+    display: block;
+  }
+
+  th, td {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  th, td {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
