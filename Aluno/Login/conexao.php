@@ -17,36 +17,34 @@
     } 
       $cpf=$_POST['cpf'];
       $senha=$_POST['senha'];
-
-      $consulta ="select * from login where cpf = '$cpf' AND senha = '$senha'";
-
-      $resultado = mysqli_query($conexao,$consulta);
-
-      $row = mysqli_num_rows($resultado);
-
-      if($row == 1){
-        header("location: ../Home/index.html");
-      } else{
-          echo "<script>alert(\"Registro Não Autenticado\")
-          window.location='index.html';;</script>";
-        }
-
     
-// $login_gestor = "30330";
-// $login_rh = "30008";
+      // Login do Aluno
+      $consulta1 ="select * from loginaluno where cpf = '$cpf' AND senha = '$senha'";
 
-//   if($chapa == $login_gestor AND $row == 1){
+      $resultado1 = mysqli_query($conexao,$consulta1);
 
-//           header("location: tela_home_gestor.html");
-//         }
-//         elseif ($chapa == $login_rh AND $row == 1){
-//           header("location: tela_home.html");
-//         } else{
-//           echo "<script>alert(\"Registro Não Autenticado\")
-//           window.location='index.html';;</script>";
-//         }
-        
-      
+      $rowAluno = mysqli_num_rows($resultado1);
+
+      // Login do Professor
+
+      $consulta2 ="select * from loginprofessor where cpf = '$cpf' AND senha = '$senha'";
+
+      $resultado2 = mysqli_query($conexao,$consulta2);
+
+      $rowProf = mysqli_num_rows($resultado2);
+
+      // echo $rowAluno;
+      // echo $rowProf;
+
+       if($rowAluno == 1){
+         header("location: ../Home/index.html");
+       }elseif($rowProf == 1){
+         header("location: .  ./Professor/HomeP/index.html");
+       } else{
+           echo "<script>alert(\"CPF ou Senha Incorretos !!!\")
+           window.location='index.html';;</script>";
+         }
+
  ?>
 </body>
 </html>
