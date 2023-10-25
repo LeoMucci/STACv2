@@ -97,7 +97,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="../Calendario/index.html">
                             <i class='bx bxs-calendar icon'></i>
                             <span class="text nav-text">Calendario</span>
                         </a>
@@ -343,6 +343,7 @@
         document.addEventListener('DOMContentLoaded', function () {
     var userLink = document.querySelector('.user-link');
     var userPopup = document.querySelector('.user-popup');
+    var sidebar = document.querySelector('.sidebar');
 
     userLink.addEventListener('mouseenter', function () {
         userPopup.style.display = 'block';
@@ -350,6 +351,10 @@
 
     userLink.addEventListener('mouseleave', function () {
         userPopup.style.display = 'none';
+    });
+
+    sidebar.addEventListener('click', function () {
+        userPopup.classList.toggle('active-sidebar');
     });
 });
 

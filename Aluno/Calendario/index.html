@@ -55,8 +55,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#" style="
-                        background-color: var(--primary-color);">
+                        <a href="../Home/index.html">
                             <i class='bx bxs-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
@@ -84,7 +83,8 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="./index.html" style="
+                        background-color: var(--primary-color);">
                             <i class='bx bxs-calendar icon'></i>
                             <span class="text nav-text">Calendario</span>
                         </a>
@@ -112,7 +112,7 @@
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="../Login/index.html">
+                    <a href="../../Login/index.html">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -136,6 +136,31 @@
     </nav>
 
     <section class="home">
+
+      <div class="user-popup">
+        <div class="user-info">
+            <img src="./images/leo.jpg" alt="Foto do Aluno">
+            <p class="aluno-nome">Leonardo Capra Mucci</p>
+            <p class="aluno-ra">RA: 1681432312016 - Ciclo: 1</p></div>
+            <p class="rendimento">Rendimento no Curso:</p>
+            <ul class="rendimento-info">
+                <li>PP: 0.00%</li>
+                <li>PR: 0.00</li>
+                <li>MAIOR PR: 0.00</li>
+            </ul>
+            <p class="prazo">Prazo de Integralização:</p>
+            <ul class="prazo-info">
+                <li>Cursado: 1</li>
+                <li>Máximo: 3</li>
+                <li>Faltam: 2</li>
+            </ul>
+            <p class="email">Email Institucional:</p>
+            <p class="email-info">FATEC - Leonardo.mucci@fatec.sp.gov.br</p>
+        
+    </div>
+
+
+
         
         <div class="homi">
         <div id="calendar"></div>
@@ -187,6 +212,25 @@
                 modeText.innerText = 'Light mode';
             }
         }
+
+        
+        document.addEventListener('DOMContentLoaded', function () {
+    var userLink = document.querySelector('.user-link');
+    var userPopup = document.querySelector('.user-popup');
+    var sidebar = document.querySelector('.sidebar');
+
+    userLink.addEventListener('mouseenter', function () {
+        userPopup.style.display = 'block';
+    });
+
+    userLink.addEventListener('mouseleave', function () {
+        userPopup.style.display = 'none';
+    });
+
+    sidebar.addEventListener('click', function () {
+        userPopup.classList.toggle('active-sidebar');
+    });
+});
 
         !function() {
 

@@ -614,11 +614,16 @@ ul {
 
 @media only screen and (max-width: 800px) {
   .sidebar.close {
-    width: 10px;
+    width: 1px;
+  }
+
+  .sidebar.close .image {
+    display: none;
   }
 
   .sidebar {
     width: 75%;
+    padding: 0px 5px;
   }
 
   .text1 {
@@ -694,5 +699,72 @@ input[type=text], select {
     background-color: #B20000;
     color: #ffffff;
   }
+
+  
+.user-popup {
+  display: none;
+  position: fixed;
+  color: white;
+  top: 50px;
+  left: 0;
+  width: 500px;
+  height: 550px;
+  background-color: var(--cont-color);
+  border: 1px solid #000000;
+  padding: 10px;
+  margin-left: 100px;
+  border-radius: 30px;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+  filter: drop-shadow(0px 13.882201194763184px 0px rgba(0, 0, 0, 0.11)) 
+          drop-shadow(0px 24.279632568359375px 8.932112693786621px rgba(0, 0, 0, 0.14)) 
+          drop-shadow(0px 32.99589538574219px 31.63776397705078px rgba(0, 0, 0, 0.13)) 
+          drop-shadow(0px 42.33186340332031px 70.31375885009766px rgba(0, 0, 0, 0.13));
+}
+
+
+.user-popup.active-sidebar {
+  margin-left: 265px; /* Ajuste conforme necessário */
+}
+
+#user-section:hover + .home .user-popup {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.user-info {
+  text-align: center;
+}
+
+.user-info img {
+  width: 100px; /* ajuste conforme necessário */
+  height: 100px; /* ajuste conforme necessário */
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.aluno-nome {
+  font-weight: bold;
+}
+
+.rendimento, .prazo, .email {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.rendimento-info, .prazo-info {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rendimento-info li, .prazo-info li {
+  margin-bottom: 5px;
+}
+
+.email-info {
+  color: #007bff; /* ou outra cor desejada */
+  font-weight: bold;
+}
 
 
