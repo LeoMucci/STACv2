@@ -1,3 +1,4 @@
+<!-- precisei criar um php pra fazer esse -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +78,7 @@
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="../../../Aluno/Login/index.html">
+                    <a href="../../../Login/index.html">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -100,6 +101,21 @@
 
     </nav>
 
+    <?php
+    $conexao = mysqli_connect("localhost", "root", "", "bd");
+
+    if ($conexao == FALSE)
+    {
+      echo "Não foi possivel conectar-se ao PhpMyAdmin";
+      exit;
+    }
+
+    $consultaIdTurma = "select * from Turma order by idTurma;";
+
+    $resultado_idTurma = mysqli_query($conexao,$consultaIdTurma);
+    
+?>
+    
     <section class="home">
 
 
@@ -114,23 +130,27 @@
                 <div class="card">
                   <section class="bottom">
                     <ul class="users">
-                      <li class="user" onclick="irParaPagina('../index.html')">
-                        <span class="user-name" >ADS AMS 4</span>
-                        <span class="user-occupation">Analise de desenvolvimento de sistemas</span>
-                      </li>
-                      <li class="user">
-                        <span class="user-name">...</span>
-                        <span class="user-occupation">...</span>
-                      </li>
-                      <li class="user">
-                        <span class="user-name">...</span>
-                        <span class="user-occupation">...</span>
-                      </li>
-                      <li class="user">
-                        <span class="user-name">...</span>
-                        <span class="user-occupation">...</span>
-                      </li>
-                    </ul>
+                      
+                        <!-- <span class="user-name" >ADS AMS 4</span> -->
+                        
+                        
+
+<?php
+
+$row = mysqli_num_rows($resultado_idTurma);
+if ($row == 0){
+        echo "<script>alert(\"Registro não encontrado\")
+        window.location='index.php';;</script>";
+    } else{
+        while( $turmas = mysqli_fetch_array($resultado_idTurma)){
+                       echo "<a class='user' href = '../index.php?idturma=$turmas[IdTurma]'>";
+                       echo " <span class='user-occupation'>". $turmas['IdTurma'] . "-". "</span>" ;    
+                       echo " <span class='user-occupation'>". $turmas['NomeTurma'] .  "</span>" ;
+                       echo "</a>";                    
+        }
+    }
+?>
+</ul>   
                   </section>
                 </div>
                 </div>

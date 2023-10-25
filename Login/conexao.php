@@ -33,11 +33,8 @@
 
       $rowProf = mysqli_num_rows($resultado2);
 
-      // echo $rowAluno;
-      // echo $rowProf;
-
        if($rowAluno == 1){
-         header("location: ../Home/index.html");
+         header("location: ../Aluno/Home/index.html");
        }elseif($rowProf == 1){
          header("location: ../Professor/HomeP/index.html");
        } else{
