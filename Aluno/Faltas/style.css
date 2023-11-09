@@ -645,7 +645,7 @@ ul {
   }
   
   .cards .green {
-    background-color: var(--cont-color);
+    background-color: var(--cont-sidebarcolor);
   }
   
   .cards .card {
@@ -678,9 +678,9 @@ ul {
   .titulo {
     width: 105%;
     border-radius: 10px 10px 8px 8px;
-    fill: #B20000;
+    fill: #15537C;;
 stroke-width: 4px;
-stroke: #B20000;
+stroke: #15537C;;
 filter: drop-shadow(0px 1.9932421445846558px 1.5945937633514404px rgba(0, 0, 0, 0.12)) 
         drop-shadow(0px 4.528800010681152px 3.623039960861206px rgba(0, 0, 0, 0.19)) 
         drop-shadow(0px 7.882175445556641px 6.3057403564453125px rgba(0, 0, 0, 0.23)) 
@@ -693,11 +693,11 @@ filter: drop-shadow(0px 1.9932421445846558px 1.5945937633514404px rgba(0, 0, 0, 
     width: 105%;
     border-radius: 10px 10px 8px 8px;
     font-size: .6em;
-    fill: #B20000;
-    background-color: #B20000;
+    fill: #15537C;;
+    background-color: #15537C;;
     font-weight: 700;
 stroke-width: 4px;
-stroke: #B20000;
+stroke: #15537C;
 filter: drop-shadow(0px 1.9932421445846558px 1.5945937633514404px rgba(0, 0, 0, 0.12)) 
         drop-shadow(0px 4.528800010681152px 3.623039960861206px rgba(0, 0, 0, 0.19)) 
         drop-shadow(0px 7.882175445556641px 6.3057403564453125px rgba(0, 0, 0, 0.23)) 
@@ -710,11 +710,11 @@ filter: drop-shadow(0px 1.9932421445846558px 1.5945937633514404px rgba(0, 0, 0, 
     width: 105%;
     border-radius: 10px 10px 8px 8px;
     font-size: .79em;
-    fill: #B20000;
-    background-color: #B20000;
+    fill: #15537C;
+    background-color: #15537C;
     font-weight: 700;
 stroke-width: 4px;
-stroke: #B20000;
+stroke: #15537C;
 filter: drop-shadow(0px 1.9932421445846558px 1.5945937633514404px rgba(0, 0, 0, 0.12)) 
         drop-shadow(0px 4.528800010681152px 3.623039960861206px rgba(0, 0, 0, 0.19)) 
         drop-shadow(0px 7.882175445556641px 6.3057403564453125px rgba(0, 0, 0, 0.23)) 

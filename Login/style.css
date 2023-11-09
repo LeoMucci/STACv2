@@ -252,7 +252,14 @@ body {
 @media only screen and (max-width: 800px) {
     .login-box {
         flex: 100%;
+        width: 50px;
     
+    }
+
+    #login-container{
+
+        height: 75vh;
+    transform: translateY(15%);
     }
 
 

@@ -11,7 +11,7 @@
 :root {
   /* ===== Colors ===== */
   --body-color: #E4E9F7;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
@@ -39,7 +39,7 @@ body {
 
 body.dark {
   --body-color: #18191a;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #18191a;
   --toggle-color: #fff;
@@ -603,11 +603,11 @@ ul {
 }
 
 .cards .red {
-  background-color: #B20000;
+  background-color: #15537C;
 }
 
 .cards .white {
-  background-color: #B20000;
+  background-color: #15537C;
   color: black;
 }
 

@@ -11,7 +11,7 @@
 :root {
   /* ===== Colors ===== */
   --body-color: #E4E9F7;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
@@ -39,7 +39,7 @@ body {
 
 body.dark {
   --body-color: #18191a;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #18191a;
   --toggle-color: #fff;
@@ -891,7 +891,7 @@ table th {
   position: relative;
   --white: #e3e3e3;
   --bc: rgb(203,46,79);
-  --bc-al: rgba(178, 0, 0, 0.6);
+  --bc-al: rgb(48 95 214 / 60%);
 }
 
 .card {
