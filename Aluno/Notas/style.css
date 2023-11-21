@@ -11,7 +11,7 @@
 :root {
   /* ===== Colors ===== */
   --body-color: #E4E9F7;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
@@ -39,7 +39,7 @@ body {
 
 body.dark {
   --body-color: #18191a;
-  --sidebar-color: #B20000;
+  --sidebar-color: #15537C;
   --primary-color: #ffffff;
   --primary-color-light: #18191a;
   --toggle-color: #fff;
@@ -591,8 +591,8 @@ ul {
 }
 
 .card-container {
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
     position: relative;
     border-radius: 10px;
     transition: all 1s;
@@ -635,6 +635,34 @@ ul {
   
   }
 
+  .card .materia{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sidebar-color);
+    transition: scale 0.6s, rotate 0.6s, filter 1s;
+  }
+
+.nomes{
+
+  background-color: #15537C;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.nomes h1{
+
+  color: white;
+ font-size:xx-large
+
+}
+
  .h3 {
     color: white;
 
@@ -652,6 +680,24 @@ ul {
   .img-content p {
 
     color: white;
+  }
+
+
+
+  .card-container:hover{
+    filter: blur(0px);
+    transform: scale(1.1, 1.1);
+    z-index: 9999;
+  }
+
+  .card-container:hover > .card-container:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+    z-index: 9999;
+  }
+
+  .card-container:not(:hover) {
+    transform: scale(0.9, 0.9);
   }
 
   .card .content {
@@ -679,11 +725,13 @@ ul {
     font-size: 32px;
     font-weight: 700;
   }
+
   
   .card:hover .content {
     opacity: 1;
     transform: translateY(0);
     background-color: var(--cont-color);
+    
   }
   
   .card:hover .img-content {
@@ -691,6 +739,16 @@ ul {
     rotate: 30deg;
     filter: blur(20px);
     opacity: 0.3;
+    
+
+  }
+
+  .card:hover .materia {
+    scale: 2.5;
+    rotate: 30deg;
+    filter: blur(20px);
+    opacity: 0.3;
+    
 
   }
   
@@ -701,7 +759,7 @@ ul {
     .grid {
       display: flex;
     gap: 20px;
-    padding: 20px;
+    
     margin: auto;
     justify-content: center;
     flex-wrap: wrap;
@@ -737,10 +795,20 @@ ul {
 
   @media only screen and (max-width: 800px) {
     .card-container {
-      height: 50px;
+      height: 130px;
     }
     .card-container:hover{
-      height: 100%;
+      height: 380px;
+    }
+
+    .sidebar.close~.home {
+      width: calc(100% - 140px);
+    }
+
+    .nomes h1{
+
+      font-size: 1.4rem;
+    
     }
   }
 
