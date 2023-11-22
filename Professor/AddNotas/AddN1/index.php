@@ -170,6 +170,7 @@ if (!empty($_GET['idturma'])) {
 
                         <div class='form__field' style='flex: 1;'>
                         <input type='hidden' name='raAluno[]' value='<?= $Alunos['RA'] ?>'>
+                        <input type='hidden' name='raAluno[]' value='<?= $idTurma ?>'>
                             <input type='number' class='form__input' name="notas_n1[]" placeholder='Nota da N1' required>
                             <label for='name' class='form__label'>Nota N1</label>
                         </div>
