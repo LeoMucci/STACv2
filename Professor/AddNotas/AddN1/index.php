@@ -153,7 +153,7 @@ if (!empty($_GET['idturma'])) {
                     <h4 class='aa' style='color: #ffffff;'>Inserir notas N1</h4>
 
                     <div class='form__group field'>
-                        <input type='input' class='form__field' placeholder='Nome do Aluno' readonly value="<?= $Alunos['Nome'] ?>">
+                        <input type='input' class='form__field' placeholder='Nome do Aluno'  value="<?= $Alunos['Nome'] ?>">
                         <label for='name' class='form__label'>Nome do Aluno</label>
                     </div>
 
@@ -164,14 +164,16 @@ if (!empty($_GET['idturma'])) {
 
                     <div class='form__group field' style='display: flex;'>
                         <div class='form__field' style='flex: 1;'>
-                            <input type='date' class='form__input' placeholder='Data da N1' required>
+                            <input type='date' class='form__input' name="dataN1[]"     placeholder='Data da N1' required>
                             <label for='name' class='form__label'>Data N1</label>
                         </div>
 
                         <div class='form__field' style='flex: 1;'>
-                            <input type='number' class='form__input' placeholder='Nota da N1' required>
+                        <input type='hidden' name='raAluno[]' value='<?= $Alunos['RA'] ?>'>
+                            <input type='number' class='form__input' name="notas_n1[]" placeholder='Nota da N1' required>
                             <label for='name' class='form__label'>Nota N1</label>
                         </div>
+
                     </div>
 
                     <div class='form__group field'>
