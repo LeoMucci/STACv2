@@ -645,7 +645,7 @@ ul {
   }
   
   .cards .green {
-    background-color: var(--cont-sidebarcolor);
+    background-color: var(--cont-color);
   }
   
   .cards .card {

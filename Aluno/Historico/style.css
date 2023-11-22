@@ -696,7 +696,7 @@ input[type=text], select {
   }
 
   .ckdis{
-    background-color: #B20000;
+    background-color: var(--sidebar-color);
     color: #ffffff;
   }
 
