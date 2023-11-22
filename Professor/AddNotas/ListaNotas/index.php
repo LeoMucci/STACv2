@@ -111,7 +111,6 @@
     }
 
     $consultaIdTurma = "select * from Turma order by idTurma;";
-
     $resultado_idTurma = mysqli_query($conexao,$consultaIdTurma);
     
 ?>
