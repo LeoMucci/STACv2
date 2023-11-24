@@ -143,7 +143,7 @@
       exit;
     }
 
-    $consultaAlunos = "select * from aluno where idTurma = $idTurma order by Nome";
+    $consultaAlunos = "select * from aluno order by Nome";
 
     $resultado_Alunos = mysqli_query($conexao,$consultaAlunos);
 

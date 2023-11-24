@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $notas_n1 = $_POST['notas_n1'];
         $raAlunos = $_POST['raAluno'];
         $dataN1Array = isset($_POST['dataN1']) ? $_POST['dataN1'] : [];
+        $idTurma = $_POST['idTurma'];
 
         $conexao = mysqli_connect("localhost", "root", "", "bd");
 
@@ -13,13 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Supondo que você tenha uma tabela chamada 'notas' no banco de dados
-        $query = "INSERT INTO notas (RA, DataN1, N1) VALUES (?, ?, ?)";
+        $query = "INSERT INTO notas (RA, DataN1, N1, IdTurma) VALUES (?, ?, ?, ?)";
 
         // Preparando a declaração
         $stmt = mysqli_prepare($conexao, $query);
 
         // Associando parâmetros
-        mysqli_stmt_bind_param($stmt, "sss", $raAluno, $dataN1, $nota_n1);
+        mysqli_stmt_bind_param($stmt, "ssds", $raAluno, $dataN1, $nota_n1, $idTurma);
 
         // Iterando sobre as notas e inserindo no banco de dados
         foreach ($notas_n1 as $key => $nota_n1) {
@@ -30,6 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!mysqli_stmt_execute($stmt)) {
                 // Adicione algum tratamento de erro, se necessário
                 echo "Erro ao inserir nota para o aluno com RA: $raAluno";
+            } else {
+                echo "<script>alert(\"Notas Adicionadas com Sucesso\")
+                window.location='../ListaNotas/index.php';;</script>";
             }
         }
 
@@ -38,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_close($conexao);
 
         // Redirecionar ou realizar outra ação após a inserção no banco de dados
-        header("Location: sucesso.php");
+        
         exit;
     } else {
         echo "Nenhuma nota N1 enviada.";

@@ -135,7 +135,7 @@ if (!empty($_GET['idturma'])) {
         exit;
     }
 
-    $consultaAlunos = "SELECT * FROM aluno WHERE idTurma = $idTurma ORDER BY Nome";
+    $consultaAlunos = "SELECT * FROM aluno ORDER BY Nome";
 
     $resultado_Alunos = mysqli_query($conexao, $consultaAlunos);
 
@@ -170,6 +170,7 @@ if (!empty($_GET['idturma'])) {
 
                         <div class='form__field' style='flex: 1;'>
                         <input type='hidden' name='raAluno[]' value='<?= $Alunos['RA'] ?>'>
+                        <input type='hidden' name='idTurma' value='<?= $idTurma ?>'>
                             <input type='number' class='form__input' name="notas_n1[]" placeholder='Nota da N1' required>
                             <label for='name' class='form__label'>Nota N1</label>
                         </div>
