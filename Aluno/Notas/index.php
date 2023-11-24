@@ -173,33 +173,43 @@
                 <p class="email-info">FATEC - Leonardo.mucci@fatec.sp.gov.br</p>
             
         </div>
+<!-- notas -->
 
+<?php
+    $conexao = mysqli_connect("localhost", "root", "", "bd");
 
+    if ($conexao == FALSE) {
+        echo "Não foi possível conectar-se ao PhpMyAdmin";
+        exit;
+    }
 
-        <div class="container-lg"><b>Notas</b></div>
+    $consultaNotasPI = "SELECT * FROM notas WHERE ra = 16 AND idturma = 1";
+    $resultado_NotasPI = mysqli_query($conexao, $consultaNotasPI);
+    $NotasPI = mysqli_fetch_array($resultado_NotasPI);
 
+    $consultaMediaFinalPI = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 1";
+    $resultado_MediaFinalPI = mysqli_query($conexao, $consultaMediaFinalPI);
+    $MediaFinalPI = mysqli_fetch_array($resultado_MediaFinalPI);
+?>
 
-        <center><div class="container-lg">
-            
+<div class="container-lg"><b>Notas</b></div>
+
+<center>
+    <div class="container-lg">
         <div class="grid">
-
             <div class="card-container">
                 <div class="card">
                     <div class="materia">
-
                         <div class="nomes">
                             <h1>Projeto Integrador I</h1>
                         </div>
-
                     </div>
-
                     <div class="content">
-                    
                         <div class="card-title"></div>
                         <h5>Projeto Integrador I</h5>
-                        
                         <div class="card-info">
-                            <p>Media final: **</p>
+                            <p>Média final: <?php echo $MediaFinalPI['MediaFinal']; ?></p>
                             <p>Faltas:**</p>
                             <p>% Frequência: **</p>
                         </div>
@@ -213,27 +223,27 @@
                                 <tr>
                                     <td>N1</td>
                                     <td>xx/xx/xx</td>
-                                    <td>10</td>
+                                    <td><?php echo $NotasPI['N1']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N2</td>
                                     <td>xx/xx/xx</td>
-                                    <td>10</td>
+                                    <td><?php echo $NotasPI['N2']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N3</td>
                                     <td>xx/xx/xx</td>
-                                    <td>10</td>
+                                    <td><?php echo $NotasPI['N3']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N4</td>
                                     <td>xx/xx/xx</td>
-                                    <td>10</td>
+                                    <td><?php echo $NotasPI['N4']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N5</td>
                                     <td>xx/xx/xx</td>
-                                    <td>10</td>
+                                    <td><?php echo $NotasPI['N5']; ?></td>
                                 </tr>
                             </table>
                         </div>
