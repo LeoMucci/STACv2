@@ -158,10 +158,10 @@ if ($row == 0){
 <div class="blure">
   <div id="buttons">
   <a href="./AddN1/index.php?idturma=<?php echo $idTurma; ?>"><button class="bn5">Add N1</button></a>
-  <a href="./AddN2/index.php"><button class="bn5">Add N2</button></a>
-  <a href="./AddN3/index.php"><button class="bn5">Add N3</button></a>
-  <a href="./AddN4/index.php"><button class="bn5">Add N4</button></a>
-  <a href="./AddN5/index.php"><button class="bn5">Add N5</button></a>
+  <a href="./AddN2/index.php?idturma=<?php echo $idTurma; ?>"><button class="bn5">Add N2</button></a>
+  <a href="./AddN3/index.php?idturma=<?php echo $idTurma; ?>"><button class="bn5">Add N3</button></a>
+  <a href="./AddN4/index.php?idturma=<?php echo $idTurma; ?>"><button class="bn5">Add N4</button></a>
+  <a href="./AddN5/index.php?idturma=<?php echo $idTurma; ?>"><button class="bn5">Add N5</button></a>
   </div>
   <table>
 

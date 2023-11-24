@@ -121,158 +121,77 @@
     </nav>
 
     <section class="home">
+    <div class="homi">
 
+<!-- inserir notas-->
+<?php
+if (!empty($_GET['idturma'])) {
+    $idTurma = $_GET['idturma'];
 
-        <div class="homi">
+    $conexao = mysqli_connect("localhost", "root", "", "bd");
 
-            <!-- inserir notas             -->
-            <form id="FormNotas" method="post">
+    if ($conexao == FALSE) {
+        echo "Não foi possível conectar-se ao PhpMyAdmin";
+        exit;
+    }
 
+    $consultaAlunos = "SELECT * FROM aluno ORDER BY Nome";
 
-                <div class="tab">
-                    <h4 class="aa" style="color: #ffffff;">Inserir notas N3</h4>
+    $resultado_Alunos = mysqli_query($conexao, $consultaAlunos);
 
-                    <div class="form__group field">
-                        <input type="input" class="form__field" placeholder="Nome do Aluno" readonly>
-                        <label for="name" class="form__label">Nome do Aluno</label>
+    $row = mysqli_num_rows($resultado_Alunos);
+
+    if ($row == 0) {
+        echo "<script>alert('Os Alunos não foram encontrados'); window.location='index.php';</script>";
+    } else {
+        ?>
+        <form id="FormNotas" action = "cadastrar.php" method="post">
+            <?php
+            while ($Alunos = mysqli_fetch_array($resultado_Alunos)) {
+                ?>
+                <div class='tab'>
+                    <h4 class='aa' style='color: #ffffff;'>Inserir notas N3</h4>
+
+                    <div class='form__group field'>
+                        <input type='input' class='form__field' placeholder='Nome do Aluno'  value="<?= $Alunos['Nome'] ?>">
+                        <label for='name' class='form__label'>Nome do Aluno</label>
                     </div>
 
-                    <div class="form__group field">
-                        <input type="number" class="form__field" placeholder="Rm do Aluno" readonly>
-                        <label for="name" class="form__label">Rm do Aluno</label>
+                    <div class='form__group field'>
+                        <input type='number' class='form__field' placeholder='RA do Aluno' readonly value="<?= $Alunos['RA'] ?>">
+                        <label for='name' class='form__label'>Rm do Aluno</label>
                     </div>
 
-                    <div class="form__group field" style="display: flex;">
-                        <div class="form__field" style="flex: 1;">
-                            <input type="date" class="form__input" placeholder="Data da N1" required>
-                            <label for="name" class="form__label">Data N1</label>
+                    <div class='form__group field' style='display: flex;'>
+                        <div class='form__field' style='flex: 1;'>
+                            <input type='date' class='form__input' name="dataN3[]"     placeholder='Data da N3' required>
+                            <label for='name' class='form__label'>Data N3</label>
                         </div>
 
-                        <div class="form__field" style="flex: 1;">
-                            <input type="number" class="form__input" placeholder="Nota da N1" required>
-                            <label for="name" class="form__label">Nota N1</label>
+                        <div class='form__field' style='flex: 1;'>
+                        <input type='hidden' name='raAluno[]' value='<?= $Alunos['RA'] ?>'>
+                        <input type='hidden' name='idTurma' value='<?= $idTurma ?>'>
+                            <input type='number' class='form__input' name="notas_3[]" placeholder='Nota da N3' required>
+                            <label for='name' class='form__label'>Nota N3</label>
                         </div>
+
                     </div>
 
+                    <div class='form__group field'>
+                        <button class='buttonn' id='prevBtn' onclick='nextPrev(-1)'>Voltar</button>
+                        <button class='buttonn' id='nextBtn' onclick='nextPrev(1)' style='left: 40%;'>Próximo</button>
+                    </div>
                 </div>
-        
-
-                <div class="tab">
-                    <h4 class="aa" style="color: #ffffff;">Inserir notas N3</h4>
-
-                    <div class="form__group field">
-                        <input type="input" class="form__field" placeholder="Nome do Aluno" readonly>
-                        <label for="name" class="form__label">Nome do Aluno</label>
-                    </div>
-
-                    <div class="form__group field">
-                        <input type="number" class="form__field" placeholder="Rm do Aluno" readonly>
-                        <label for="name" class="form__label">Rm do Aluno</label>
-                    </div>
-
-                    <div class="form__group field" style="display: flex;">
-                        <div class="form__field" style="flex: 1;">
-                            <input type="date" class="form__input" placeholder="Data da N1" required>
-                            <label for="name" class="form__label">Data N1</label>
-                        </div>
-
-                        <div class="form__field" style="flex: 1;">
-                            <input type="number" class="form__input" placeholder="Nota da N1" required>
-                            <label for="name" class="form__label">Nota N1</label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="tab">
-                    <h4 class="aa" style="color: #ffffff;">Inserir notas N1</h4>
-
-                    <div class="form__group field">
-                        <input type="input" class="form__field" placeholder="Nome do Aluno" readonly>
-                        <label for="name" class="form__label">Nome do Aluno</label>
-                    </div>
-
-                    <div class="form__group field">
-                        <input type="number" class="form__field" placeholder="Rm do Aluno" readonly>
-                        <label for="name" class="form__label">Rm do Aluno</label>
-                    </div>
-
-                    <div class="form__group field" style="display: flex;">
-                        <div class="form__field" style="flex: 1;">
-                            <input type="date" class="form__input" placeholder="Data da N1" required>
-                            <label for="name" class="form__label">Data N1</label>
-                        </div>
-
-                        <div class="form__field" style="flex: 1;">
-                            <input type="number" class="form__input" placeholder="Nota da N1" required>
-                            <label for="name" class="form__label">Nota N1</label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="tab">
-                    <h4 class="aa" style="color: #ffffff;">Inserir notas N1</h4>
-
-                    <div class="form__group field">
-                        <input type="input" class="form__field" placeholder="Nome do Aluno" readonly>
-                        <label for="name" class="form__label">Nome do Aluno</label>
-                    </div>
-
-                    <div class="form__group field">
-                        <input type="number" class="form__field" placeholder="Rm do Aluno" readonly>
-                        <label for="name" class="form__label">Rm do Aluno</label>
-                    </div>
-
-                    <div class="form__group field" style="display: flex;">
-                        <div class="form__field" style="flex: 1;">
-                            <input type="date" class="form__input" placeholder="Data da N1" required>
-                            <label for="name" class="form__label">Data N1</label>
-                        </div>
-
-                        <div class="form__field" style="flex: 1;">
-                            <input type="number" class="form__input" placeholder="Nota da N1" required>
-                            <label for="name" class="form__label">Nota N1</label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="tab">
-                    <h4 class="aa" style="color: #ffffff;">Inserir notas N1</h4>
-
-                    <div class="form__group field">
-                        <input type="input" class="form__field" placeholder="Nome do Aluno" readonly>
-                        <label for="name" class="form__label">Nome do Aluno</label>
-                    </div>
-
-                    <div class="form__group field">
-                        <input type="number" class="form__field" placeholder="Rm do Aluno" readonly>
-                        <label for="name" class="form__label">Rm do Aluno</label>
-                    </div>
-
-                    <div class="form__group field" style="display: flex;">
-                        <div class="form__field" style="flex: 1;">
-                            <input type="date" class="form__input" placeholder="Data da N1" required >
-                            <label for="name" class="form__label">Data N1</label>
-                        </div>
-
-                        <div class="form__field" style="flex: 1;">
-                            <input type="number" class="form__input" placeholder="Nota da N1" required>
-                            <label for="name" class="form__label">Nota N1</label>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-        <div class="form__group field">
-            <button class="buttonn" id="prevBtn" onclick="nextPrev(-1)">Voltar</button>
-            <button class="buttonn" id="nextBtn" onclick="nextPrev(1)" style="left: 40%;">Próximo</button>
-        </div>
+                <?php
+            }
+            ?>
         </form>
+        <?php
+    }
+}
+?>
+
+
 
 
 
@@ -280,74 +199,10 @@
 
         <!-- botoes pra add notas -->
         <div class="blure">
-
-
-            <!-- tabela com a relação dos alunos  -->
-            <?php
-
-    if(!empty($_GET['idturma'])){
-
-    $idTurma = $_GET['idturma'];
-
-    $conexao = mysqli_connect("localhost", "root", "", "bd");
-
-    if ($conexao == FALSE)
-    {
-      echo "Não foi possivel conectar-se ao PhpMyAdmin";
-      exit;
-    }
-
-    $consultaAlunos = "select * from aluno where idTurma = $idTurma order by Nome";
-
-    $resultado_Alunos = mysqli_query($conexao,$consultaAlunos);
-
-    $row = mysqli_num_rows($resultado_Alunos);
-if ($row == 0){
-        echo "<script>alert(\"Os Alunos não foram encontrados\")
-        window.location='index.php';;</script>";
-    } else{
-?>
-            <table>
-
-                <tr>
-                    <th>Nome</th>
-                    <th>RM</th>
-                    <th>N1</th>
-                    <th>N2</th>
-                    <th>N3</th>
-                    <th>N4</th>
-                    <th>N5</th>
-                    <th>Editar</th>
-
-
-                    <?php
-    while( $Alunos = mysqli_fetch_array($resultado_Alunos)){
-        echo "<tr>";
-        echo "<td>". $Alunos['Nome']."</td>";
-        echo "<td>". $Alunos['RA']."</td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "</tr>";
-
-    }
-}
-    }
-   
-?>
-
-
-            </table>
-
         </div>
         </div>
 
-
-
-
+        
     </section>
 
     <script>
