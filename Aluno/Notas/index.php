@@ -182,7 +182,7 @@
         echo "Não foi possível conectar-se ao PhpMyAdmin";
         exit;
     }
-
+    ///////// consulta Projeto Integrador 
     $consultaNotasPI = "SELECT * FROM notas WHERE ra = 16 AND idturma = 1";
     $resultado_NotasPI = mysqli_query($conexao, $consultaNotasPI);
     $NotasPI = mysqli_fetch_array($resultado_NotasPI);
@@ -191,6 +191,19 @@
     FROM notas WHERE ra = 16 AND idturma = 1";
     $resultado_MediaFinalPI = mysqli_query($conexao, $consultaMediaFinalPI);
     $MediaFinalPI = mysqli_fetch_array($resultado_MediaFinalPI);
+
+    // Obtendo a data do banco de dados
+    $consultaDataPi = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 1";
+    $resultado_DataPi = mysqli_query($conexao, $consultaDataPi);
+    $dataNotasPi = mysqli_fetch_array($resultado_DataPi);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN1']));
+    $dataN2FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN2']));
+    $dataN3FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN3']));
+    $dataN4FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN4']));
+    $dataN5FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN5']));
 ?>
 
 <div class="container-lg"><b>Notas</b></div>
@@ -222,27 +235,27 @@
                                 </tr>
                                 <tr>
                                     <td>N1</td>
-                                    <td>xx/xx/xx</td>
+                                    <td><?php echo $dataN1FormatadaPi ; ?></td>
                                     <td><?php echo $NotasPI['N1']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N2</td>
-                                    <td>xx/xx/xx</td>
+                                    <td><?php echo $dataN2FormatadaPi ; ?></td>
                                     <td><?php echo $NotasPI['N2']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N3</td>
-                                    <td>xx/xx/xx</td>
+                                    <td><?php echo $dataN3FormatadaPi ; ?></td>
                                     <td><?php echo $NotasPI['N3']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N4</td>
-                                    <td>xx/xx/xx</td>
+                                    <td><?php echo $dataN4FormatadaPi ; ?></td>
                                     <td><?php echo $NotasPI['N4']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>N5</td>
-                                    <td>xx/xx/xx</td>
+                                    <td><?php echo $dataN5FormatadaPi ; ?></td>
                                     <td><?php echo $NotasPI['N5']; ?></td>
                                 </tr>
                             </table>
@@ -252,7 +265,30 @@
                 </div>
             </div>
         
-    
+  <?php
+    // Consulta Banco de Dados
+    $consultaNotasBD = "SELECT * FROM notas WHERE ra = 16 AND idturma = 2";
+    $resultado_NotasBD = mysqli_query($conexao, $consultaNotasBD);
+    $NotasBD = mysqli_fetch_array($resultado_NotasBD);
+
+    $consultaMediaFinalBD = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 2";
+    $resultado_MediaFinalBD = mysqli_query($conexao, $consultaMediaFinalBD);
+    $MediaFinalBD = mysqli_fetch_array($resultado_MediaFinalBD);
+
+    // Obtendo a data do banco de dados
+    $consultaDataBD = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 2";
+    $resultado_DataBD = mysqli_query($conexao, $consultaDataBD);
+    $dataNotasBD = mysqli_fetch_array($resultado_DataBD);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN1']));
+    $dataN2FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN2']));
+    $dataN3FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN3']));
+    $dataN4FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN4']));
+    $dataN5FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN5']));
+?>
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -268,7 +304,7 @@
                     <h5>Técnicas Avançadas de Banco de Dados</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalBD['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -281,34 +317,59 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaBD; ?></td>
+                                <td><?php echo $NotasBD['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaBD; ?></td>
+                                <td><?php echo $NotasBD['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaBD; ?></td>
+                                <td><?php echo $NotasBD['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaBD; ?></td>
+                                <td><?php echo $NotasBD['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaBD; ?></td>
+                                <td><?php echo $NotasBD['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
+<?php
+    // Consulta Estrutura de Dados
+    $consultaNotasED = "SELECT * FROM notas WHERE ra = 16 AND idturma = 3";
+    $resultado_NotasED = mysqli_query($conexao, $consultaNotasED);
+    $NotasED = mysqli_fetch_array($resultado_NotasED);
+
+    $consultaMediaFinalED = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 3";
+    $resultado_MediaFinalED = mysqli_query($conexao, $consultaMediaFinalED);
+    $MediaFinalED = mysqli_fetch_array($resultado_MediaFinalED);
+
+    // Obtendo a data do banco de dados
+    $consultaDataED = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 3";
+    $resultado_DataED = mysqli_query($conexao, $consultaDataED);
+    $dataNotasED = mysqli_fetch_array($resultado_DataED);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN1']));
+    $dataN2FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN2']));
+    $dataN3FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN3']));
+    $dataN4FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN4']));
+    $dataN5FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN5']));
+?>        
     
         <div class="card-container">
             <div class="card">
@@ -324,7 +385,7 @@
                     <h5>Estruturas de Dados</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalED['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -337,35 +398,59 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaED; ?></td>
+                                <td><?php echo $NotasED['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaED; ?></td>
+                                <td><?php echo $NotasED['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaED; ?></td>
+                                <td><?php echo $NotasED['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaED; ?></td>
+                                <td><?php echo $NotasED['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaED; ?></td>
+                                <td><?php echo $NotasED['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    
+
+<?php
+    // Consulta Engenharia de Software
+    $consultaNotasES = "SELECT * FROM notas WHERE ra = 16 AND idturma = 4";
+    $resultado_NotasES = mysqli_query($conexao, $consultaNotasES);
+    $NotasES = mysqli_fetch_array($resultado_NotasES);
+
+    $consultaMediaFinalES = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 4";
+    $resultado_MediaFinalES = mysqli_query($conexao, $consultaMediaFinalES);
+    $MediaFinalES = mysqli_fetch_array($resultado_MediaFinalES);
+
+    // Obtendo a data do banco de dados
+    $consultaDataES = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 4";
+    $resultado_DataES = mysqli_query($conexao, $consultaDataES);
+    $dataNotasES = mysqli_fetch_array($resultado_DataES);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN1']));
+    $dataN2FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN2']));
+    $dataN3FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN3']));
+    $dataN4FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN4']));
+    $dataN5FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN5']));
+?> 
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -381,7 +466,7 @@
                     <h5>Engenharia de Software</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalES['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -394,28 +479,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaES; ?></td>
+                                <td><?php echo $NotasES['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaES; ?></td>
+                                <td><?php echo $NotasES['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaES; ?></td>
+                                <td><?php echo $NotasES['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaES; ?></td>
+                                <td><?php echo $NotasES['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaES; ?></td>
+                                <td><?php echo $NotasES['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -423,7 +508,30 @@
     
             </div>
         </div>
-    
+<?php
+    // Consulta Interação Humano Computador
+    $consultaNotasIHC = "SELECT * FROM notas WHERE ra = 16 AND idturma = 5";
+    $resultado_NotasIHC = mysqli_query($conexao, $consultaNotasIHC);
+    $NotasIHC = mysqli_fetch_array($resultado_NotasIHC);
+
+    $consultaMediaFinalIHC = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 5";
+    $resultado_MediaFinalIHC = mysqli_query($conexao, $consultaMediaFinalIHC);
+    $MediaFinalIHC = mysqli_fetch_array($resultado_MediaFinalIHC);
+
+    // Obtendo a data do banco de dados
+    $consultaDataIHC = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 5";
+    $resultado_DataIHC = mysqli_query($conexao, $consultaDataIHC);
+    $dataNotasIHC = mysqli_fetch_array($resultado_DataIHC);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN1']));
+    $dataN2FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN2']));
+    $dataN3FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN3']));
+    $dataN4FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN4']));
+    $dataN5FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN5']));
+?>     
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -439,7 +547,7 @@
                     <h5>Interação Humano Computador</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalIHC['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -452,28 +560,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaIHC; ?></td>
+                                <td><?php echo $NotasIHC['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaIHC; ?></td>
+                                <td><?php echo $NotasIHC['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaIHC; ?></td>
+                                <td><?php echo $NotasIHC['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaIHC; ?></td>
+                                <td><?php echo $NotasIHC['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaIHC; ?></td>
+                                <td><?php echo $NotasIHC['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -481,7 +589,31 @@
     
             </div>
         </div>
-    
+
+<?php
+    // Consulta Técnicas Avançadas de Programação
+    $consultaNotasTAP = "SELECT * FROM notas WHERE ra = 16 AND idturma = 6";
+    $resultado_NotasTAP = mysqli_query($conexao, $consultaNotasTAP);
+    $NotasTAP = mysqli_fetch_array($resultado_NotasTAP);
+
+    $consultaMediaFinalTAP = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 6";
+    $resultado_MediaFinalTAP = mysqli_query($conexao, $consultaMediaFinalTAP);
+    $MediaFinalTAP = mysqli_fetch_array($resultado_MediaFinalTAP);
+
+    // Obtendo a data do banco de dados
+    $consultaDataTAP = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 6";
+    $resultado_DataTAP = mysqli_query($conexao, $consultaDataTAP);
+    $dataNotasTAP = mysqli_fetch_array($resultado_DataTAP);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN1']));
+    $dataN2FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN2']));
+    $dataN3FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN3']));
+    $dataN4FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN4']));
+    $dataN5FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN5']));
+?>         
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -493,11 +625,8 @@
                 </div>
                 <div class="content">
                 
-                    <div class="card-title"></div>
-                    <h5>Técnicas Avançadas de Programação</h5>
-    
-                    <div class="card-info">
-                        <p>Media final: **</p>
+                <div class="card-info">
+                        <p>Media final: <?php echo $MediaFinalTAP['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -510,28 +639,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaTAP; ?></td>
+                                <td><?php echo $NotasTAP['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaTAP; ?></td>
+                                <td><?php echo $NotasTAP['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaTAP; ?></td>
+                                <td><?php echo $NotasTAP['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaTAP; ?></td>
+                                <td><?php echo $NotasTAP['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaTAP; ?></td>
+                                <td><?php echo $NotasTAP['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -539,7 +668,31 @@
     
             </div>
         </div>
-    
+
+        <?php
+    // Consulta Técnicas Avançadas de Programação Web e Mobile
+    $consultaNotasTAPWM = "SELECT * FROM notas WHERE ra = 16 AND idturma = 7";
+    $resultado_NotasTAPWM = mysqli_query($conexao, $consultaNotasTAPWM);
+    $NotasTAPWM = mysqli_fetch_array($resultado_NotasTAPWM);
+
+    $consultaMediaFinalTAPWM = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 7";
+    $resultado_MediaFinalTAPWM = mysqli_query($conexao, $consultaMediaFinalTAPWM);
+    $MediaFinalTAPWM = mysqli_fetch_array($resultado_MediaFinalTAPWM);
+
+    // Obtendo a data do banco de dados
+    $consultaDataTAPWM = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 7";
+    $resultado_DataTAPWM = mysqli_query($conexao, $consultaDataTAPWM);
+    $dataNotasTAPWM = mysqli_fetch_array($resultado_DataTAPWM);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN1']));
+    $dataN2FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN2']));
+    $dataN3FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN3']));
+    $dataN4FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN4']));
+    $dataN5FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN5']));
+?>     
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -555,7 +708,7 @@
                     <h5>Técnicas Avançadas de Programação Web e Mobile</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalTAPWM['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -568,28 +721,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaTAPWM; ?></td>
+                                <td><?php echo $NotasTAPWM['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaTAPWM; ?></td>
+                                <td><?php echo $NotasTAPWM['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaTAPWM; ?></td>
+                                <td><?php echo $NotasTAPWM['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaTAPWM; ?></td>
+                                <td><?php echo $NotasTAPWM['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaTAPWM; ?></td>
+                                <td><?php echo $NotasTAPWM['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -597,13 +750,36 @@
     
             </div>
         </div>
-    
+<?php 
+    // Consulta Inteligência Corporativa e Modelos de Negócios na Era Digital
+    $consultaNotasICMNED = "SELECT * FROM notas WHERE ra = 16 AND idturma = 8";
+    $resultado_NotasICMNED = mysqli_query($conexao, $consultaNotasICMNED);
+    $NotasICMNED = mysqli_fetch_array($resultado_NotasICMNED);
+
+    $consultaMediaFinalICMNED = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 8";
+    $resultado_MediaFinalICMNED = mysqli_query($conexao, $consultaMediaFinalICMNED);
+    $MediaFinalICMNED = mysqli_fetch_array($resultado_MediaFinalICMNED);
+
+    // Obtendo a data do banco de dados
+    $consultaDataICMNED = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 8";
+    $resultado_DataICMNED = mysqli_query($conexao, $consultaDataICMNED);
+    $dataNotasICMNED = mysqli_fetch_array($resultado_DataICMNED);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN1']));
+    $dataN2FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN2']));
+    $dataN3FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN3']));
+    $dataN4FormatadaICMNED= date('d/m/Y', strtotime($dataNotasICMNED['DataN4']));
+    $dataN5FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN5']));
+?>    
         <div class="card-container">
             <div class="card">
                 <div class="materia">
 
                     <div class="nomes">
-                        <h1>Inteligência Corporativa e Modelos de Negócios na Era Digita</h1>
+                        <h1>Inteligência Corporativa e Modelos de Negócios na Era Digital</h1>
                     </div>
 
                 </div>
@@ -613,7 +789,7 @@
                     <h5>Inteligência Corporativa e Modelos de Negócios na Era Digita</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalICMNED['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -626,28 +802,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasICMNED['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasICMNED['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasICMNED['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasICMNED['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasICMNED['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -656,6 +832,30 @@
             </div>
         </div>
 
+<?php 
+    // Consulta Gestão Ágil de Projetos de Software
+    $consultaNotasGAPS = "SELECT * FROM notas WHERE ra = 16 AND idturma = 9";
+    $resultado_NotasGAPS = mysqli_query($conexao, $consultaNotasGAPS);
+    $NotasGAPS = mysqli_fetch_array($resultado_NotasGAPS);
+
+    $consultaMediaFinalGAPS = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 9";
+    $resultado_MediaFinalGAPS = mysqli_query($conexao, $consultaMediaFinalGAPS);
+    $MediaFinalGAPS = mysqli_fetch_array($resultado_MediaFinalGAPS);
+
+    // Obtendo a data do banco de dados
+    $consultaDataGAPS = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 9";
+    $resultado_DataGAPS = mysqli_query($conexao, $consultaDataGAPS);
+    $dataNotasGAPS = mysqli_fetch_array($resultado_DataGAPS);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN1']));
+    $dataN2FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN2']));
+    $dataN3FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN3']));
+    $dataN4FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN4']));
+    $dataN5FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN5']));
+?>         
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -671,7 +871,7 @@
                     <h5>Gestão Ágil de Projetos de Software</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalGAPS['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -684,28 +884,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaGAPS; ?></td>
+                                <td><?php echo $NotasGAPS['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaGAPS; ?></td>
+                                <td><?php echo $NotasGAPS['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaGAPS; ?></td>
+                                <td><?php echo $NotasGAPS['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaGAPS; ?></td>
+                                <td><?php echo $NotasGAPS['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaICMNED; ?></td>
+                                <td><?php echo $NotasGAPS['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -714,6 +914,30 @@
             </div>
         </div>
 
+<?php 
+    // Consulta Organização de Computadores e Sistemas Operacionais
+    $consultaNotasOCSO = "SELECT * FROM notas WHERE ra = 16 AND idturma = 10";
+    $resultado_NotasOCSO = mysqli_query($conexao, $consultaNotasOCSO);
+    $NotasOCSO = mysqli_fetch_array($resultado_NotasOCSO);
+
+    $consultaMediaFinalOCSO = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 10";
+    $resultado_MediaFinalOCSO = mysqli_query($conexao, $consultaMediaFinalOCSO);
+    $MediaFinalOCSO = mysqli_fetch_array($resultado_MediaFinalOCSO);
+
+    // Obtendo a data do banco de dados
+    $consultaDataOCSO = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 10";
+    $resultado_DataOCSO = mysqli_query($conexao, $consultaDataOCSO);
+    $dataNotasOCSO = mysqli_fetch_array($resultado_DataOCSO);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN1']));
+    $dataN2FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN2']));
+    $dataN3FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN3']));
+    $dataN4FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN4']));
+    $dataN5FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN5']));
+?> 
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -729,7 +953,7 @@
                     <h5>Organização de Computadores e Sistemas Operacionais</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalOCSO['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -742,28 +966,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaOCSO; ?></td>
+                                <td><?php echo $NotasOCSO['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaOCSO; ?></td>
+                                <td><?php echo $NotasOCSO['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaOCSO; ?></td>
+                                <td><?php echo $NotasOCSO['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaOCSO; ?></td>
+                                <td><?php echo $NotasOCSO['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaOCSO; ?></td>
+                                <td><?php echo $NotasOCSO['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -772,6 +996,30 @@
             </div>
         </div>
 
+<?php 
+    // Consulta Matemática Discreta
+    $consultaNotasMD = "SELECT * FROM notas WHERE ra = 16 AND idturma = 11";
+    $resultado_NotasMD = mysqli_query($conexao, $consultaNotasMD);
+    $NotasMD = mysqli_fetch_array($resultado_NotasMD);
+
+    $consultaMediaFinalMD = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 11";
+    $resultado_MediaFinalMD = mysqli_query($conexao, $consultaMediaFinalMD);
+    $MediaFinalMD = mysqli_fetch_array($resultado_MediaFinalMD);
+
+    // Obtendo a data do banco de dados
+    $consultaDataMD = "SELECT DataN1, DataN2, DataN3, DataN4, DataN5 FROM notas WHERE ra = 16 AND idturma = 11";
+    $resultado_DataMD = mysqli_query($conexao, $consultaDataMD);
+    $dataNotasMD = mysqli_fetch_array($resultado_DataMD);
+
+    // Convertendo a data para o formato desejado
+    // Convertendo as datas para o formato desejado
+    $dataN1FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN1']));
+    $dataN2FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN2']));
+    $dataN3FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN3']));
+    $dataN4FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN4']));
+    $dataN5FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN5']));
+?> 
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -787,7 +1035,7 @@
                     <h5>Matemática Discreta</h5>
     
                     <div class="card-info">
-                        <p>Media final: **</p>
+                        <p>Media final: <?php echo $MediaFinalMD['MediaFinal']; ?></p>
                         <p>Faltas:**</p>
                         <p>% Frequência: **</p>
                     </div>
@@ -800,28 +1048,28 @@
                             </tr>
                             <tr>
                                 <td>N1</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN1FormatadaMD; ?></td>
+                                <td><?php echo $NotasMD['N1']; ?></td>
                             </tr>
                             <tr>
                                 <td>N2</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN2FormatadaMD; ?></td>
+                                <td><?php echo $NotasMD['N2']; ?></td>
                             </tr>
                             <tr>
                                 <td>N3</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN3FormatadaMD; ?></td>
+                                <td><?php echo $NotasMD['N3']; ?></td>
                             </tr>
                             <tr>
                                 <td>N4</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN4FormatadaMD; ?></td>
+                                <td><?php echo $NotasMD['N4']; ?></td>
                             </tr>
                             <tr>
                                 <td>N5</td>
-                                <td>xx/xx/xx</td>
-                                <td>10</td>
+                                <td><?php echo $dataN5FormatadaMD; ?></td>
+                                <td><?php echo $NotasMD['N5']; ?></td>
                             </tr>
                         </table>
                     </div>
