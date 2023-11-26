@@ -1,3 +1,4 @@
+<!-- precisei criar um php pra fazer esse -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,31 +26,12 @@
 
 <body class="dark">
 
-    <!-- 
-    <label for="theme" class="theme">
-        <span class="theme__toggle-wrap">
-            <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="change-theme" value="dark">
-            <span class="theme__fill"></span>
-            <span class="theme__icon">
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-                <span class="theme__icon-part"></span>
-            </span>
-        </span>
-    </label> -->
-
 
     <nav class="sidebar close">
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="./images/soLogo.png" alt="">
+                    <img src="../images/soLogo.png" alt="">
                 </span>
 
                 <div class="text logo-text">
@@ -66,38 +48,37 @@
 
 
 
-                <ul class="menu-links">
+                <class class="menu-links">
                     <li class="nav-link">
-                        <a href="../HomeP/index.html">
+                        <a href="../../HomeP/index.html">
                             <i class='bx bxs-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../AddNotas/ListaNotas/index.php">
+                        <a href="./index.html" >
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../AddFaltas/TurmasFalta/index.php"  style="
+                        <a href="../../AddFaltas/TurmasFalta/index.php"style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
                         </a>
                     </li>
-                </ul>
+                </class>
+
             </div>
-
-
             <li class="search-box" s>
             </li>
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="../../Login/index.html">
+                    <a href="../../../Login/index.html">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -120,73 +101,61 @@
 
     </nav>
 
+    <?php
+    $conexao = mysqli_connect("localhost", "root", "", "bd");
+
+    if ($conexao == FALSE)
+    {
+      echo "Não foi possivel conectar-se ao PhpMyAdmin";
+      exit;
+    }
+
+    $consultaIdTurma = "select * from Turma where idProf = 1 order by idTurma;";
+    $resultado_idTurma = mysqli_query($conexao,$consultaIdTurma);
+    
+?>
+    
     <section class="home">
 
-        <div class="containerr">
 
         <div class="container-lg">
 
-           <div class="homi">
-            
-
-
-            <table>
-
-                <tr>
-                <th>Aula</th>
-                <th>conteudo</th>
-                
-            </tr>
-                <tr>
-                  <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 21</a></td>
-                    <td>objeto em java</td></a>
-                </tr>
-
-                <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 22</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
-                  
-                  <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 23</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
-
-                  <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 24</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
-
-                  <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 25</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
-
-                  <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 26</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
-
-                  <tr>
-                    <td><a href="../AddFaltas/ListarFaltas/index.html">Aula 27</a></td>
-                      <td>objeto em java</td></a>
-                  </tr>
 
 
 
+            <div class="wrapper">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+                <div class="card">
+                  <section class="bottom">
+                    <ul class="users">
+                      
+                         <span class="user-name" >ADS AMS 4</span>
+                        
+                        
 
-           </div>
+<?php
 
-
-
-
-
-
+$row = mysqli_num_rows($resultado_idTurma);
+if ($row == 0){
+        echo "<script>alert(\"Registro não encontrado\")
+        window.location='index.php';;</script>";
+    } else{
+        while( $turmas = mysqli_fetch_array($resultado_idTurma)){
+                       echo "<a class='user' href = '../index.html?idturma=$turmas[IdTurma]'>";
+                       echo " <span class='user-occupation'>". $turmas['IdTurma'] . "-". "</span>" ;    
+                       echo " <span class='user-occupation'>". $turmas['NomeTurma'] .  "</span>" ;
+                       echo "</a>";                    
+        }
+    }
+?>
+</ul>   
+                  </section>
+                </div>
+                </div>
 
         </div>
-    </div>
 
-        
 
     </section>
 
