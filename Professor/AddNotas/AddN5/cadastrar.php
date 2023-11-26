@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Adicione algum tratamento de erro, se necessário
                 echo "Erro ao inserir nota para o aluno com RA: $raAluno";
             } else {
-                echo "<script>alert(\"Notas Adicionadas com Sucesso\")
+                echo "<script>alert(\"Notas N5 Adicionadas com Sucesso\")
                 window.location='../ListaNotas/index.php';;</script>";
             }
         }
