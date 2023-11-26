@@ -203,93 +203,202 @@
                   <th>Frequência</th>
                   <th>OBS</th>
                 </tr>
+
+<?php
+// consulta Projeto Integrador I
+    $conexao = mysqli_connect("localhost", "root", "", "bd");
+
+    if ($conexao == FALSE) {
+        echo "Não foi possível conectar-se ao PhpMyAdmin";
+        exit;
+    }
+
+    $consultaMediaFinalPI = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 1";
+    $resultado_MediaFinalPI = mysqli_query($conexao, $consultaMediaFinalPI);
+    $MediaFinalPI = mysqli_fetch_array($resultado_MediaFinalPI);
+    
+?>
                 <tr>
                   <td>IAL021</td>
                   <td>Projeto Integrador I</td>
                   <td>20231</td>
                   <td><input type="checkbox" onclick="return false;"></td>
-                  <td class="vermelho">--</td>
+                  <td class="<?php echo ($MediaFinalPI['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalPI['MediaFinal']; ?>
+                  </td>
+                  </td>
                   <td>--</td>
                   <td>Em Curso</td>
                 </tr>
+<?php
+// consulta Técnicas Avançadas de Banco de Dados Relacional e Não Relacional
+        $consultaMediaFinalBD = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+        FROM notas WHERE ra = 16 AND idturma = 2";
+        $resultado_MediaFinalBD = mysqli_query($conexao, $consultaMediaFinalBD);
+        $MediaFinalBD = mysqli_fetch_array($resultado_MediaFinalBD);
+    
+?>
                 <tr>
                   <td>IBD034</td>
                   <td>Técnicas Avançadas de Banco de Dados Relacional e Não Relacional</td>
                   <td>20231</td>
                   <td><input type="checkbox" onclick="return false;"></td>
-                  <td class="vermelho">4.3</td>
+                  <td class="<?php echo ($MediaFinalBD['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalBD['MediaFinal']; ?>
+                  </td>
                   <td>--</td>
                   <td>Em Curso</td>
                 </tr>
+<?php
+// consulta Estruturas de Dados
+    $consultaMediaFinalED = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 3";
+    $resultado_MediaFinalED = mysqli_query($conexao, $consultaMediaFinalED);
+    $MediaFinalED = mysqli_fetch_array($resultado_MediaFinalED);
+    
+?>
                 <tr>
                   <td>IED008</td>
                   <td>Estruturas de Dados</td>
                   <td>20231</td>
                   <td><input type="checkbox" onclick="return false;"></td>
-                  <td class="vermelho">4.1</td>
+                  <td class="<?php echo ($MediaFinalED['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalED['MediaFinal']; ?>
+                  </td>
                   <td>--</td>
                   <td>Em Curso</td>
                 </tr>
+<?php
+// consulta Engenharia de Software
+    $consultaMediaFinalES = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 4";
+    $resultado_MediaFinalES = mysqli_query($conexao, $consultaMediaFinalES);
+    $MediaFinalES = mysqli_fetch_array($resultado_MediaFinalES);
+    
+?>
                 <tr>
                   <td>IES020</td>
                   <td>Engenharia de Software</td>
                   <td>20231</td>
                   <td><input type="checkbox" onclick="return false;"></td>
-                  <td class="vermelho">4.0</td>
+                  <td class="<?php echo ($MediaFinalES['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalES['MediaFinal']; ?>
+                  </td>
                   <td>--</td>
                   <td>Em Curso</td>
                 </tr>
+<?php
+// consulta Interação Humano Computador
+        $consultaMediaFinalIHC = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+        FROM notas WHERE ra = 16 AND idturma = 5";
+        $resultado_MediaFinalIHC = mysqli_query($conexao, $consultaMediaFinalIHC);
+        $MediaFinalIHC = mysqli_fetch_array($resultado_MediaFinalIHC);
+    
+?>
                 <tr>
                   <td>IHC008</td>
                   <td>Interação Humano Computador</td>
                   <td>20231</td>
                   <td><input type="checkbox" onclick="return false;"></td>
-                  <td class="vermelho">--</td>
+                  <td class="<?php echo ($MediaFinalIHC['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalIHC['MediaFinal']; ?>
+                 </td>
                   <td>--</td>
                   <td>Em Curso</td>
                 </tr>
+<?php
+// consulta Técnicas Avançadas de Programação
+    $consultaMediaFinalTAP = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 6";
+    $resultado_MediaFinalTAP = mysqli_query($conexao, $consultaMediaFinalTAP);
+    $MediaFinalTAP = mysqli_fetch_array($resultado_MediaFinalTAP);
+    
+?>
                 <tr>
                     <td>ILP063</td>
                     <td>Técnicas Avançadas de Programação</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="vermelho">4.3</td>
+                    <td class="<?php echo ($MediaFinalTAP['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalTAP['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
+<?php
+// consulta Técnicas Avançadas de Programação Web e Mobile
+    $consultaMediaFinalTAPWM = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 7";
+    $resultado_MediaFinalTAPWM = mysqli_query($conexao, $consultaMediaFinalTAPWM);
+    $MediaFinalTAPWM = mysqli_fetch_array($resultado_MediaFinalTAPWM);
+    
+?>
                   <tr>
                     <td>ILP065</td>
                     <td>Técnicas Avançadas de Programação Web e Mobile</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="verde">7.1</td>
+                    <td class="<?php echo ($MediaFinalTAPWM['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalTAPWM['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
+<?php
+// consulta Inteligência Corporativa e Modelos de Negócios na Era Digital
+    $consultaMediaFinalICMNED = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 8";
+    $resultado_MediaFinalICMNED = mysqli_query($conexao, $consultaMediaFinalICMNED);
+    $MediaFinalICMNED = mysqli_fetch_array($resultado_MediaFinalICMNED);
+    
+?>
                   <tr>
                     <td>INE003</td>
                     <td>Inteligência Corporativa e Modelos de Negócios na Era Digital</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="vermelho">5.0</td>
+                    <td class="<?php echo ($MediaFinalICMNED['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalICMNED['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
+<?php
+// consulta Gestão Ágil de Projetos de Software
+        $consultaMediaFinalGAPS = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+        FROM notas WHERE ra = 16 AND idturma = 9";
+        $resultado_MediaFinalGAPS = mysqli_query($conexao, $consultaMediaFinalGAPS);
+        $MediaFinalGAPS = mysqli_fetch_array($resultado_MediaFinalGAPS);
+    
+?>
                   <tr>
                     <td>INE004</td>
                     <td>Gestão Ágil de Projetos de Software</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="verde">10.0</td>
+                    <td class="<?php echo ($MediaFinalGAPS['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalGAPS['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
+<?php
+// consulta Organização de Computadores e Sistemas Operacionais
+        $consultaMediaFinalOCSO = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+        FROM notas WHERE ra = 16 AND idturma = 10";
+        $resultado_MediaFinalOCSO = mysqli_query($conexao, $consultaMediaFinalOCSO);
+        $MediaFinalOCSO = mysqli_fetch_array($resultado_MediaFinalOCSO);
+    
+?>
                   <tr>
                     <td>ISO016</td>
                     <td>Organização de Computadores e Sistemas Operacionais</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="verde">6.5</td>
+                    <td class="<?php echo ($MediaFinalOCSO['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalOCSO['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
@@ -299,7 +408,7 @@
                     <td>20231</td>
                     <td><input type="checkbox" checked="checked" onclick="return false;"></td>
                     <div class="checkmark"></div>
-                    <td class="verde">8.0</td>
+                    <td class="vermelho">0</td>
                     <td>--</td>
                     <td>Dispensado por Proficiência</td>
                   </tr>
@@ -308,16 +417,26 @@
                     <td>Língua Inglesa II</td>
                     <td>20231</td>
                     <td><input type="checkbox" checked="checked" onclick="return false;"></td>
-                    <td class="verde">8.0</td>
+                    <td class="vermelho">0</td>
                     <td>--</td>
                     <td>Dispensado por Proficiência</td>
                   </tr>
+<?php
+// consulta Matemática Discreta
+    $consultaMediaFinalMD = "SELECT ROUND((N1 + N2 + N3 + N4) / 4, 2) AS MediaFinal
+    FROM notas WHERE ra = 16 AND idturma = 11";
+    $resultado_MediaFinalMD = mysqli_query($conexao, $consultaMediaFinalMD);
+    $MediaFinalMD = mysqli_fetch_array($resultado_MediaFinalMD);
+    
+?>
                   <tr>
                     <td>MAT028</td>
                     <td>Matemática Discreta</td>
                     <td>20231</td>
                     <td><input type="checkbox" onclick="return false;"></td>
-                    <td class="vermelho">5.2</td>
+                    <td class="<?php echo ($MediaFinalMD['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
+                      <?php echo $MediaFinalMD['MediaFinal']; ?>
+                    </td>
                     <td>--</td>
                     <td>Em Curso</td>
                   </tr>
