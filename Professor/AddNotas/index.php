@@ -143,15 +143,17 @@
       exit;
     }
 
-    $consultaAlunos = "select * from aluno order by Nome";
+    // Consulta dos Alunos
+    $consultaAlunos = "SELECT * FROM aluno ORDER BY Nome";
+    $resultado_Alunos = mysqli_query($conexao, $consultaAlunos);
 
-    $resultado_Alunos = mysqli_query($conexao,$consultaAlunos);
+    $row_Alunos = mysqli_fetch_all($resultado_Alunos, MYSQLI_ASSOC);
 
-    $row = mysqli_num_rows($resultado_Alunos);
-if ($row == 0){
-        echo "<script>alert(\"Os Alunos não foram encontrados\")
-        window.location='index.php';;</script>";
-    } else{
+    // Consulta das Notas
+    $consultaNotas = "SELECT * FROM notas WHERE idturma = " . $idTurma . ";";
+    $resultado_Notas = mysqli_query($conexao, $consultaNotas);
+
+    $row_Notas = mysqli_fetch_all($resultado_Notas, MYSQLI_ASSOC);
 ?>
 
 <!-- botoes pra add notas -->
@@ -173,25 +175,44 @@ if ($row == 0){
     <th>N3</th>
     <th>N4</th>
     <th>N5</th>
-    <th>Editar</th>
+    
     
 
 <?php
-    while( $Alunos = mysqli_fetch_array($resultado_Alunos)){
-        echo "<tr>";
-        echo "<td>". $Alunos['Nome']."</td>";
-        echo "<td>". $Alunos['RA']."</td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "<td> 0 </td>";
-        echo "</tr>";
+      // Criar um array associativo para armazenar as notas por RA
+      $notasPorAluno = array();
 
-    }
-}
-    }
+      // Preencher o array com as notas
+      foreach ($row_Notas as $Nota) {
+          $notasPorAluno[$Nota['RA']] = $Nota;
+      }
+  
+      // Loop para exibir a tabela
+      foreach ($row_Alunos as $Aluno) {
+          echo "<tr>";
+          echo "<td>" . $Aluno['Nome'] . "</td>";
+          echo "<td>" . $Aluno['RA'] . "</td>";
+  
+          // Verificar se há notas correspondentes ao aluno
+          if (isset($notasPorAluno[$Aluno['RA']])) {
+              $Notas = $notasPorAluno[$Aluno['RA']];
+              echo "<td>" . $Notas['N1'] . "</td>";
+              echo "<td>" . $Notas['N2'] . "</td>";
+              echo "<td>" . $Notas['N3'] . "</td>";
+              echo "<td>" . $Notas['N4'] . "</td>";
+              echo "<td>" . $Notas['N5'] . "</td>";
+          } else {
+              // Se não houver notas, exibe células vazias
+              echo "<td>0</td>";
+              echo "<td>0</td>";
+              echo "<td>0</td>";
+              echo "<td>0</td>";
+              echo "<td>0</td>";
+          }
+  
+          echo "</tr>";
+      }
+  }
    
 ?>
 
