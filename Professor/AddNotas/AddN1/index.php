@@ -123,6 +123,13 @@
     <section class="home">
     <div class="homi">
 
+        <button class="learn-more" onclick="irParaPaginaa('../AddNotas/ListaNotas/index.php')">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Voltar</span>
+          </button>
+
 <!-- inserir notas-->
 <?php
 if (!empty($_GET['idturma'])) {
@@ -145,10 +152,18 @@ if (!empty($_GET['idturma'])) {
         echo "<script>alert('Os Alunos não foram encontrados'); window.location='index.php';</script>";
     } else {
         ?>
+
+        
+
+
+
+
+       
         <form id="FormNotas" action = "cadastrar.php" method="post">
             <?php
             while ($Alunos = mysqli_fetch_array($resultado_Alunos)) {
                 ?>
+
                 <div class='tab'>
                     <h4 class='aa' style='color: #ffffff;'>Inserir notas N1</h4>
 
@@ -257,7 +272,9 @@ if (!empty($_GET['idturma'])) {
             botaoAddN1.addEventListener('click', mostrarFormulario);
         });
 
-
+        function irParaPaginaa() {
+        window.location.href = '../index.php';
+    }
         // Adicione um ouvinte de evento ao botão de alternância de tema, se necessário
         const themeToggleButton = document.querySelector('.theme-toggle-button');
 

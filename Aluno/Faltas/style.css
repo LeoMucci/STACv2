@@ -16,7 +16,7 @@
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
   --text-color: #000000;
-  --cont-color: #35373a;
+  --cont-color: rgba(120, 120, 120, 0.12);;
   --text-inside-color: #ffffff;
 
   /* ====== Transition ====== */

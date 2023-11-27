@@ -123,6 +123,13 @@
     <section class="home">
     <div class="homi">
 
+    <button class="learn-more" onclick="irParaPaginaa('../AddNotas/ListaNotas/index.php')">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Voltar</span>
+          </button>
+
 <!-- inserir notas-->
 <?php
 if (!empty($_GET['idturma'])) {
@@ -228,7 +235,13 @@ if (!empty($_GET['idturma'])) {
         function irParaPagina(pagina) {
             // Redirecionar para a página desejada
             window.location.href = pagina;
+
+
         }
+
+        function irParaPaginaa() {
+        window.location.href = '../index.php';
+    }
 
         function toggleTheme() {
             const isDarkMode = body.classList.contains('dark');

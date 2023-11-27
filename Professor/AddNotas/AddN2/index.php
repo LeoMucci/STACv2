@@ -123,6 +123,13 @@
     <section class="home">
     <div class="homi">
 
+        <button class="learn-more" onclick="irParaPaginaa('../AddNotas/ListaNotas/index.php')">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Voltar</span>
+          </button>
+
 <!-- inserir notas-->
 <?php
 if (!empty($_GET['idturma'])) {
@@ -324,6 +331,9 @@ if (!empty($_GET['idturma'])) {
             return false; // Adiciona esta linha para evitar a recarga da página
         }
 
+        function irParaPaginaa() {
+        window.location.href = '../index.php';
+    }
 
         function validateForm() {
             const tabs = document.getElementsByClassName("tab");

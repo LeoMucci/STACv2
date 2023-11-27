@@ -25,6 +25,17 @@
 
 <body class="dark">
 
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget();
+      </script>
+
     <!-- 
     <label for="theme" class="theme">
         <span class="theme__toggle-wrap">
@@ -90,30 +101,30 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Historico/index.html" title="Historico">
+                        <a href="../Historico/index.html" title="Histórico">
                             <i class='bx bxs-graduation icon'></i>
-                            <span class="text nav-text">Historico</span>
+                            <span class="text nav-text">Histórico</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#" title="Calendario">
+                        <a href="../Calendario/index.html" title="Calendário">
                             <i class='bx bxs-calendar icon '></i>
-                            <span class="text nav-text">Calendario</span>
+                            <span class="text nav-text">Calendário</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Horario/index.html">
+                        <a href="../Horario/index.html"title="Horário">
                             <i class='bx bxs-grid icon'></i>
-                            <span class="text nav-text">Horario</span>
+                            <span class="text nav-text">Horário</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bxs-user icon'></i>
-                            <span class="text nav-text">Usuario</span>
+                            <span class="text nav-text">Usuário</span>
                         </a>
                     </li>
 
