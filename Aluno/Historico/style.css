@@ -16,8 +16,9 @@
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
   --text-color: #000000;
-  --cont-color: #35373a;
+  --cont-color: rgba(120, 120, 120, 0.12);
   --text-inside-color: #000000;
+  --cont-user-color:#35373a;
 
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;
@@ -46,8 +47,8 @@ body.dark {
   --text-color: #000000;
   --text-inside-color: #ffffff;
   --cont-color: #35373a;
+  --cont-user-color:#35373a;
 }
-
 
 
 /* ===== Sidebar ===== */
@@ -664,7 +665,7 @@ th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-  color: #ffffff;
+  color: var(--text-inside-color);
 }
 
 th {

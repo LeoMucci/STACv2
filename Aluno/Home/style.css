@@ -16,8 +16,9 @@
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
   --text-color: #000000;
-  --cont-color: #35373a;
+  --cont-color: rgba(120, 120, 120, 0.12);
   --text-inside-color: #000000;
+  --cont-user-color:#35373a;
 
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;
@@ -46,6 +47,7 @@ body.dark {
   --text-color: #000000;
   --text-inside-color: #ffffff;
   --cont-color: #35373a;
+  --cont-user-color:#35373a;
 }
 
 
@@ -562,7 +564,8 @@ ul {
   display: flex;
   justify-content: center;
   border-radius: 40px;
-
+	-webkit-animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
 }
 
@@ -590,10 +593,40 @@ ul {
   padding: 25px;
   font-size: 1rem;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--text-inside-color);
   padding: 12px 60px;
 
+  -webkit-animation: fade-in-bck 1.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-bck 1.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  
+
 }
+
+@-webkit-keyframes fade-in-bck {
+  0% {
+    -webkit-transform: translateZ(80px);
+            transform: translateZ(80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-bck {
+  0% {
+    -webkit-transform: translateZ(80px);
+            transform: translateZ(80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
 
 .titulo {
 
@@ -610,7 +643,48 @@ ul {
   margin-left: 50px;
   width: calc(100% - 90px);
   border-radius: 25px;
+  border: 3px solid #15537C;
+	
 }
+
+
+
+@-webkit-keyframes slide-in-elliptic-top-fwd {
+  0% {
+    -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+            transform: translateY(-600px) rotateX(-30deg) scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotateX(0) scale(1);
+            transform: translateY(0) rotateX(0) scale(1);
+    -webkit-transform-origin: 50% 1400px;
+            transform-origin: 50% 1400px;
+    opacity: 1;
+  }
+}
+@keyframes slide-in-elliptic-top-fwd {
+  0% {
+    -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+            transform: translateY(-600px) rotateX(-30deg) scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotateX(0) scale(1);
+            transform: translateY(0) rotateX(0) scale(1);
+    -webkit-transform-origin: 50% 1400px;
+            transform-origin: 50% 1400px;
+    opacity: 1;
+  }
+}
+
+
+
+
 
 @media only screen and (max-width: 800px) {
   .sidebar.close {
@@ -666,8 +740,8 @@ ul {
   left: 0;
   width: 500px;
   height: 550px;
-  background-color: var(--cont-color);
-  border: 1px solid #000000;
+  background-color: var(--cont-user-color);
+  border: 1px solid #15537C;
   padding: 10px;
   margin-left: 100px;
   border-radius: 30px;
@@ -724,47 +798,3 @@ ul {
   font-weight: bold;
 }
 
-.calendar .calendar-header {
-  background-color: #CC251F;
-  color: white;
-  border: 0;
-}
-
-.calendar .calendar-header .year-title:hover,
-.calendar .calendar-header .prev:hover,
-.calendar .calendar-header .next:hover{
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.calendar .calendar-header .year-neighbor {
-  color: inherit;
-  opacity: 0.7;
-}
-
-.calendar .calendar-header .year-neighbor2 {
-  color: inherit;
-  opacity: 0.4;
-}
-
-.calendar .month-container {
-  height: 210px;
-}
-
-.calendar table.month {
-  height: 100%;
-}
-
-.calendar table.month .month-title {
-  background-color: #CC251F;
-  color: white;
-  padding: 5px;
-}
-
-.calendar table.month .day-header {
-  padding-top: 8px;
-  border-bottom: 2px solid #CC251F;
-}
-
-.calendar table.month td.day .day-content {
-  padding: 5px 8px;
-}

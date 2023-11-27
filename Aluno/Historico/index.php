@@ -25,6 +25,17 @@
 
 <body class="dark">
 
+<div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget();
+      </script>
+
     <!-- 
     <label for="theme" class="theme">
         <span class="theme__toggle-wrap">
@@ -68,21 +79,21 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="../Home/index.html">
+                        <a href="../Home/index.html"title="Home">
                             <i class='bx bxs-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Notas/index.html">
+                        <a href="../Notas/index.html"title="Notas">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Faltas/index.html">
+                        <a href="../Faltas/index.html"title="Faltas">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
                         </a>
@@ -90,29 +101,29 @@
 
                     <li class="nav-link">
                         <a href="./index.html"style="
-                        background-color: var(--primary-color);">
+                        background-color: var(--primary-color);"title="Histórico">
                             <i class='bx bxs-graduation icon'></i>
-                            <span class="text nav-text">Historico</span>
+                            <span class="text nav-text">Histórico</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Calendario/index.html">
+                        <a href="../Calendario/index.html"title="Calendário">
                             <i class='bx bxs-calendar icon'></i>
-                            <span class="text nav-text">Calendario</span>
+                            <span class="text nav-text">Calendário</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Horario/index.html">
+                        <a href="../Horario/index.html"title="Horário">
                             <i class='bx bxs-grid icon'></i>
-                            <span class="text nav-text">Horario</span>
+                            <span class="text nav-text">Horário</span>
                         </a>
                     </li>
                     <li class="nav-link" id="user-section">
-                      <a href="#" class="user-link">
+                      <a href="#" class="user-link"title="Usuário">
                           <i class='bx bxs-user icon'></i>
-                          <span class="text nav-text">Usuario</span>
+                          <span class="text nav-text">Usuário</span>
                       </a>
                   </li>
 
