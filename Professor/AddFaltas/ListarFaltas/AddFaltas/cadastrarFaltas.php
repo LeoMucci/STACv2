@@ -38,10 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($conexao);
 
     // Redirecionar para a página inicial ou exibir uma mensagem de sucesso
-    echo "<script>alert('Faltas e presenças cadastradas com sucesso.'); window.location='index.php';</script>";
+    echo "<script>alert('Faltas e presenças cadastradas com sucesso.'); window.location='../../TurmasFalta/index.php';</script>";
 } else {
     // Se o método de requisição não for POST, redirecionar para a página inicial
     header("Location: index.php");
     exit();
 }
 ?>
+
+
