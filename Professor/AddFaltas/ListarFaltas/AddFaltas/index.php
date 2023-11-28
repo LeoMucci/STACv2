@@ -144,7 +144,7 @@
                 echo "<script>alert('Os Alunos não foram encontrados'); window.location='index.php';</script>";
             } else {
                 ?>
-                <form id="FormNotas" action="cadastrarFaltas.php" method="post">
+                <form id="FormFaltas" action="cadastrarFaltas.php" method="post">
                     <?php
                     while ($Alunos = mysqli_fetch_array($resultado_Alunos)) {
                         ?>
@@ -230,10 +230,10 @@ function toggleTheme() {
 document.addEventListener('DOMContentLoaded', function () {
     // Função para mostrar o formulário ao clicar no botão "Add N1"
     function mostrarFormulario() {
-        var formnotas = document.getElementById('FormFaltas');
-        formnotas.style.opacity = 1;
+        var FormFaltas = document.getElementById('FormFaltas');
+        formfaltas.style.opacity = 1;
         document.querySelector('.blure').classList.add('blur');
-        formnotas.classList.add('slide-in-elliptic-top-fwd');
+        formfaltas.classList.add('slide-in-elliptic-top-fwd');
         showTab(0); // Certifique-se de exibir a primeira etapa ao mostrar o formulário
     }
 
@@ -261,75 +261,67 @@ modeSwitch.addEventListener("click", () => {
 });
 
 function showTab(n) {
-  var x = document.getElementsByClassName("tab");
-  if (n >= x.length) return; // Adicione esta linha para evitar um erro quando n é maior ou igual ao comprimento de x
+            var x = document.getElementsByClassName("tab");
+            if (n >= x.length) return; // Adicione esta linha para evitar um erro quando n é maior ou igual ao comprimento de x
 
-  // Oculta todas as abas
-  for (var i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
+            // Oculta todas as abas
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
 
-  // Exibe a aba específica
-  x[n].style.display = "block";
+            // Exibe a aba específica
+            x[n].style.display = "block";
 
-  // Atualiza a visibilidade dos botões com base na etapa atual
-  if (n === 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
+            // Atualiza a visibilidade dos botões com base na etapa atual
+            if (n === 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
 
-  if (n === x.length - 1) {
-    document.getElementById("nextBtn").innerHTML = "Enviar";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Próximo";
-  }
-}
+            if (n === x.length - 1) {
+                document.getElementById("nextBtn").innerHTML = "Enviar";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Próximo";
+            }
+        }
+        function nextPrev(n) {
+            // Esta função determinará qual etapa exibir
+            var x = document.getElementsByClassName("tab");
 
-function validateForm() {
-    const tabs = document.getElementsByClassName("tab");
-    const currentFields = tabs[currentTab].querySelectorAll("input, select");
-    
-    for (let i = 0; i < currentFields.length; i++) {
-        const fieldValue = currentFields[i].value;
+            // Oculta a etapa atual
+            x[currentTab].style.display = "none";
 
-        // Se for um combobox, verifique se uma opção foi selecionada
-        if (currentFields[i].tagName === 'SELECT' && fieldValue === "") {
-            currentFields[i].classList.add("invalid");
-            return false;
+            // Aumenta ou diminui a etapa atual
+            currentTab += n;
+
+            // Se você chegou ao final do formulário, o formulário é enviado
+            if (currentTab >= x.length) {
+                // Adiciona esta linha para evitar a recarga da página
+                event.preventDefault();
+                document.getElementById("FormFaltas").submit();
+                return false;
+            }
+
+            // Caso contrário, exibe a próxima etapa
+            showTab(currentTab);
+
+            return false; // Adiciona esta linha para evitar a recarga da página
         }
 
-        // Para inputs regulares, verifique se o valor está vazio
-        if (currentFields[i].tagName === 'INPUT' && fieldValue.trim() === "") {
-            currentFields[i].classList.add("invalid");
-            return false;
+
+        function validateForm() {
+            const tabs = document.getElementsByClassName("tab");
+            const currentInputs = tabs[currentTab].getElementsByTagName("input");
+            for (let i = 0; i < currentInputs.length; i++) {
+                if (currentInputs[i].value === "") {
+                    currentInputs[i].classList.add("invalid");
+                    return false;
+                }
+            }
+            document.getElementsByClassName("step")[currentTab].classList.add("finish");
+            return true;
         }
-    }
-
-    document.getElementsByClassName("step")[currentTab].classList.add("finish");
-    return true;
-}
-
-function nextPrev(n) {
-    var x = document.getElementsByClassName("tab");
-
-    // Oculta a etapa atual
-    x[currentTab].style.display = "none";
-
-    // Aumenta ou diminui a etapa atual
-    currentTab += n;
-
-    // Se você chegou ao final do formulário, exibe a última etapa
-    if (currentTab >= x.length) {
-        showTab(currentTab);
-        return false;
-    }
-
-    // Caso contrário, exibe a próxima etapa
-    showTab(currentTab);
-
-    return false; // Adiciona esta linha para evitar a recarga da página
-}
 
 
 
