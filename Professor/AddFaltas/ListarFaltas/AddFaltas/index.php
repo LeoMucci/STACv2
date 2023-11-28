@@ -1,4 +1,4 @@
-
+<!-- precisei criar um php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,77 +119,76 @@
         </div>
 
     </nav>
-    <?php
-if (!empty($_GET['idturma'])) {
-    $idTurma = $_GET['idturma'];
 
-    $conexao = mysqli_connect("localhost", "root", "", "bd");
-
-    if ($conexao == FALSE) {
-        echo "Não foi possível conectar-se ao PhpMyAdmin";
-        exit;
-    }
-}
-?>
     <section class="home">
+    <div class="homi">
+        <!-- inserir notas-->
+        <?php
+        if (!empty($_GET['idTurma'])) {
+            $idTurma = $_GET['idTurma'];
 
-        
-        <div class="homi">
+            $conexao = mysqli_connect("localhost", "root", "", "bd");
 
+            if ($conexao == FALSE) {
+                echo "Não foi possível conectar-se ao PhpMyAdmin";
+                exit;
+            }
 
+            $consultaAlunos = "SELECT * FROM aluno ORDER BY Nome";
 
-<div class="blure">
-  <div id="buttons">
-  <a href="./AddFaltas/index.php?idTurma=<?php echo $idTurma; ?>"><button class="bn5">Add Faltas</button></a>
-  
+            $resultado_Alunos = mysqli_query($conexao, $consultaAlunos);
 
-  </div>
-  
-  <table>
+            $row = mysqli_num_rows($resultado_Alunos);
 
-    <tr>
-    <th>Nome</th>
-    <th>RM</th>
-    <th>Presença</th>
-    
-</tr>
-    <tr>
-      <td>Leonardo Capra Mucci</td>
-        <td>1681432312016</td>
-        <td>0</td>
-    </tr>
-    <tr>
-      <td>Rodrigo Veloso de Holanda Goncalves</td>
-      <td>1681432312016</td>
-      <td>0</td>
-    </tr>
-    <tr>
-        <td>Marcos Vinicius</td>
-          <td>1681432312016</td>
-          <td>0</td>
-      </tr>
-      <tr>
-        <td>Matheus Bairrada</td>
-          <td>1681432312016</td>
-          <td>0</td>
+            if ($row == 0) {
+                echo "<script>alert('Os Alunos não foram encontrados'); window.location='index.php';</script>";
+            } else {
+                ?>
+                <form id="FormNotas" action="cadastrarFaltas.php" method="post">
+                    <?php
+                    while ($Alunos = mysqli_fetch_array($resultado_Alunos)) {
+                        ?>
+                        <div class='tab'>
+                            <h4 class='aa' style='color: #ffffff;'>Inserir Faltas</h4>
 
-      </tr>
-      <tr>
-        <td>Nicole Bignati</td>
-          <td>1681432312016</td>
-          <td>0</td>
+                            <div class="form__group field">
+                                <input type="input" class="form__field" placeholder="Nome do Aluno"  readonly value="<?= $Alunos['Nome'] ?>">
+                                <label for="name" class="form__label">Nome do Aluno</label>
+                            </div>
 
-      </tr>
-    
-  </table> 
+                            <div class="form__group field">
+                                <input type="number" class="form__field" placeholder="Rm do Aluno"  readonly value="<?= $Alunos['RA'] ?>">
+                                <label for="name" class="form__label">Rm do Aluno</label>
+                            </div>
 
- </div>
-</div>
+                            <div class="form__group field" style="padding-top: 50px;">
+                                <label for="presenca" class="form__label"style="padding-top: 20px;">Número de Presenças</label>
+                                <select class="form__field" id="presenca" name="presenca[]" required>
+                                    <option value="1" style="background-color: #15537C;">1</option>
+                                    <option value="2" style="background-color: #15537C;">2</option>
+                                    <option value="3" style="background-color: #15537C;">3</option>
+                                    <option value="4" style="background-color: #15537C;">4</option>
+                                </select>
+                            </div>
 
- 
+                            <div class='form__group field'>
+                                <button class='buttonn' id='prevBtn' onclick='nextPrev(-1)'>Voltar</button>
+                                <button class='buttonn' id='nextBtn' onclick='nextPrev(1)' style='left: 40%;'>Próximo</button>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </form>
+                <?php
+            }
+        }
+        ?>
+        <!-- botoes pra add notas -->
+        <div class="blure"></div>
+    </div>
+</section>
 
-
-    </section>
 
     <script>
 
