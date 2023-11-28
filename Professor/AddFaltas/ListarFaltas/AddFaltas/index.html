@@ -352,54 +352,67 @@ modeSwitch.addEventListener("click", () => {
 });
 
 function showTab(n) {
-  var x = document.getElementsByClassName("tab");
-  if (n >= x.length) return; // Adicione esta linha para evitar um erro quando n é maior ou igual ao comprimento de x
+            var x = document.getElementsByClassName("tab");
+            if (n >= x.length) return; // Adicione esta linha para evitar um erro quando n é maior ou igual ao comprimento de x
 
-  // Oculta todas as abas
-  for (var i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
+            // Oculta todas as abas
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
 
-  // Exibe a aba específica
-  x[n].style.display = "block";
+            // Exibe a aba específica
+            x[n].style.display = "block";
 
-  // Atualiza a visibilidade dos botões com base na etapa atual
-  if (n === 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
+            // Atualiza a visibilidade dos botões com base na etapa atual
+            if (n === 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
 
-  if (n === x.length - 1) {
-    document.getElementById("nextBtn").innerHTML = "Enviar";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Próximo";
-  }
-}
+            if (n === x.length - 1) {
+                document.getElementById("nextBtn").innerHTML = "Enviar";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Próximo";
+            }
+        }
+        function nextPrev(n) {
+            // Esta função determinará qual etapa exibir
+            var x = document.getElementsByClassName("tab");
 
-function validateForm() {
-    const tabs = document.getElementsByClassName("tab");
-    const currentFields = tabs[currentTab].querySelectorAll("input, select");
-    
-    for (let i = 0; i < currentFields.length; i++) {
-        const fieldValue = currentFields[i].value;
+            // Oculta a etapa atual
+            x[currentTab].style.display = "none";
 
-        // Se for um combobox, verifique se uma opção foi selecionada
-        if (currentFields[i].tagName === 'SELECT' && fieldValue === "") {
-            currentFields[i].classList.add("invalid");
-            return false;
+            // Aumenta ou diminui a etapa atual
+            currentTab += n;
+
+            // Se você chegou ao final do formulário, o formulário é enviado
+            if (currentTab >= x.length) {
+                // Adiciona esta linha para evitar a recarga da página
+                event.preventDefault();
+                document.getElementById("FormFaltas").submit();
+                return false;
+            }
+
+            // Caso contrário, exibe a próxima etapa
+            showTab(currentTab);
+
+            return false; // Adiciona esta linha para evitar a recarga da página
         }
 
-        // Para inputs regulares, verifique se o valor está vazio
-        if (currentFields[i].tagName === 'INPUT' && fieldValue.trim() === "") {
-            currentFields[i].classList.add("invalid");
-            return false;
-        }
-    }
 
-    document.getElementsByClassName("step")[currentTab].classList.add("finish");
-    return true;
-}
+        function validateForm() {
+            const tabs = document.getElementsByClassName("tab");
+            const currentInputs = tabs[currentTab].getElementsByTagName("input");
+            for (let i = 0; i < currentInputs.length; i++) {
+                if (currentInputs[i].value === "") {
+                    currentInputs[i].classList.add("invalid");
+                    return false;
+                }
+            }
+            document.getElementsByClassName("step")[currentTab].classList.add("finish");
+            return true;
+        }
 
 function nextPrev(n) {
     var x = document.getElementsByClassName("tab");

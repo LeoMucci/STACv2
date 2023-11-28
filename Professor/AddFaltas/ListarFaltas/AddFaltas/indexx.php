@@ -164,6 +164,7 @@
                             <div class="form__group field" style="padding-top: 50px;">
                                 <label for="presenca" class="form__label"style="padding-top: 20px;">Número de Presenças</label>
                                 <select class="form__field" id="presenca" name="presenca[]" required>
+                                    <option value="">Selecione um Valor</option>
                                     <option value="1" style="background-color: #15537C;">1</option>
                                     <option value="2" style="background-color: #15537C;">2</option>
                                     <option value="3" style="background-color: #15537C;">3</option>
