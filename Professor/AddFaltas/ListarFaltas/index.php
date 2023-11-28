@@ -129,67 +129,67 @@ if (!empty($_GET['idturma'])) {
         echo "Não foi possível conectar-se ao PhpMyAdmin";
         exit;
     }
-}
+
 ?>
     <section class="home">
-
-        
-        <div class="homi">
-
-
-
-<div class="blure">
-  <div id="buttons">
-  <a href="./AddFaltas/index.php?idTurma=<?php echo $idTurma; ?>"><button class="bn5">Add Faltas</button></a>
+    <div class="homi">
+        <div class="blure">
+            <div id="buttons">
+                <a href="./AddFaltas/index.php?idTurma=<?php echo $idTurma; ?>"><button class="bn5">Add Faltas</button></a>
+            </div>
   
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>RM</th>
+                    <th>Presença</th>
+                </tr>
 
-  </div>
-  
-  <table>
+                <?php
+                $consultaAlunos = "SELECT * FROM aluno ORDER BY Nome";
+                $resultado_Alunos = mysqli_query($conexao, $consultaAlunos);
 
-    <tr>
-    <th>Nome</th>
-    <th>RM</th>
-    <th>Presença</th>
-    
-</tr>
-    <tr>
-      <td>Leonardo Capra Mucci</td>
-        <td>1681432312016</td>
-        <td>0</td>
-    </tr>
-    <tr>
-      <td>Rodrigo Veloso de Holanda Goncalves</td>
-      <td>1681432312016</td>
-      <td>0</td>
-    </tr>
-    <tr>
-        <td>Marcos Vinicius</td>
-          <td>1681432312016</td>
-          <td>0</td>
-      </tr>
-      <tr>
-        <td>Matheus Bairrada</td>
-          <td>1681432312016</td>
-          <td>0</td>
+                $row_Alunos = mysqli_fetch_all($resultado_Alunos, MYSQLI_ASSOC);
 
-      </tr>
-      <tr>
-        <td>Nicole Bignati</td>
-          <td>1681432312016</td>
-          <td>0</td>
+                $consultaFaltas = "SELECT * FROM Faltas WHERE idturma = " . $idTurma . ";";
+                $resultado_Faltas = mysqli_query($conexao, $consultaFaltas);
 
-      </tr>
-    
-  </table> 
+                $row_Faltas = mysqli_fetch_all($resultado_Faltas, MYSQLI_ASSOC);
 
- </div>
-</div>
+                // Criar um array associativo para armazenar as faltas por RA
+                $FaltasPorAluno = array();
 
- 
+                // Preencher o array com as faltas
+                foreach ($row_Faltas as $Falta) {
+                    $FaltasPorAluno[$Falta['RA']] = $Falta;
+                }
 
+                // Loop para exibir a tabela
+                foreach ($row_Alunos as $Aluno) {
+                    echo "<tr>";
+                    echo "<td>" . $Aluno['Nome'] . "</td>";
+                    echo "<td>" . $Aluno['RA'] . "</td>";
 
-    </section>
+                    // Verificar se há faltas correspondentes ao aluno
+                    if (isset($FaltasPorAluno[$Aluno['RA']])) {
+                        $Faltas = $FaltasPorAluno[$Aluno['RA']];
+                        echo "<td>" . $Faltas['Presenca'] . "</td>";
+                    } else {
+                        // Se não houver faltas, exibe célula vazia
+                        echo "<td>0</td>";
+                    }
+
+                    echo "</tr>";
+                }
+                ?>
+            </table>
+        </div>
+    </div>
+</section>
+
+<?php
+}
+?>
 
     <script>
 
