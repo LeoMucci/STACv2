@@ -162,6 +162,8 @@
                             </div>
 
                             <div class="form__group field" style="padding-top: 50px;">
+                            <input type='hidden' name='ra[]' value='<?= $Alunos['RA'] ?>'>
+                            <input type='hidden' name='idTurma' value='<?= $idTurma ?>'>
                                 <label for="presenca" class="form__label"style="padding-top: 20px;">Número de Presenças</label>
                                 <select class="form__field" id="presenca" name="presenca[]" required>
                                     <option value="">Selecione um Valor</option>
