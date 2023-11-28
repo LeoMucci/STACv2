@@ -158,7 +158,35 @@
         </div>
 
     </nav>
+    
+   <?php
+   $conexao = mysqli_connect("localhost", "root", "", "bd");
+   
+   if ($conexao == FALSE) {
+       echo "Não foi possível conectar-se ao PhpMyAdmin";
+       exit;
+   }
+   
+   //consulta Projeto Integrador I
+   $consultaFaltasPI = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_FaltasPI = mysqli_query($conexao, $consultaFaltasPI);
+   $FaltasPI = mysqli_fetch_array($resultado_FaltasPI);
+   
+   $consultaPresencaPi = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_PresencaPi = mysqli_query($conexao, $consultaPresencaPi);
+   $PresencaPi = mysqli_fetch_array($resultado_PresencaPi);
+   
+   // calculo Frequencia 
+   $presencasPI = (int)$PresencaPi['presenca'];
+   $faltasPI = (int)$FaltasPI['falta'];
+   
 
+   $total_aulasPI = $presencasPI + $faltasPI;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualPI = ($presencasPI / $total_aulasPI) * 100;
+   ?>
+   
     <section class="home">
 
 
@@ -175,21 +203,40 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasPI; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasPI; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualPI, 2) . "%"; ?></label>
                     </div>
 
                 </div>
+<?php
+   //consulta Técnicas Avançadas de Banco de Dados Relacional e Não Relacional
+   $consultaFaltasBD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 2";
+   $resultado_FaltasBD = mysqli_query($conexao, $consultaFaltasBD);
+   $FaltasBD = mysqli_fetch_array($resultado_FaltasBD);
+   
+   $consultaPresencaBD = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 2";
+   $resultado_PresencaBD = mysqli_query($conexao, $consultaPresencaBD);
+   $PresencaBD = mysqli_fetch_array($resultado_PresencaBD);
+   
+   // calculo Frequencia 
+   $presencasBD = (int)$PresencaBD['presenca'];
+   $faltasBD = (int)$FaltasBD['falta'];
+   
 
+   $total_aulasBD = $presencasBD + $faltasBD;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualBD = ($presencasBD / $total_aulasBD) * 100;
+   ?>
                 <div class="card blue">
                     <div class="titulo">
                         <h1>Técnicas Avançadas de Banco de Dados Relacional e Não Relacional </h1>
@@ -197,20 +244,40 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasBD; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasBD; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualBD, 2) . "%"; ?></label>
                     </div>
-                </div>
 
+                </div>
+<?php
+   //consulta Estruturas de Dados
+   $consultaFaltasED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 3";
+   $resultado_FaltasED = mysqli_query($conexao, $consultaFaltasED);
+   $FaltasED = mysqli_fetch_array($resultado_FaltasED);
+   
+   $consultaPresencaED = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 3";
+   $resultado_PresencaED = mysqli_query($conexao, $consultaPresencaED);
+   $PresencaED = mysqli_fetch_array($resultado_PresencaED);
+   
+   // calculo Frequencia 
+   $presencasED = (int)$PresencaED['presenca'];
+   $faltasED = (int)$FaltasED['falta'];
+   
+
+   $total_aulasED = $presencasED + $faltasED;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualED = ($presencasED / $total_aulasED) * 100;
+   ?>
                 <div class="card green">
                     <div class="titulo">
                         <h1>Estruturas de Dados</h1>
@@ -218,19 +285,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasED; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasED; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualED, 2) . "%"; ?></label>
                     </div>
                 </div>
+                <?php
+   //consulta Engenharia de Software
+   $consultaFaltasES = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 4";
+   $resultado_FaltasES = mysqli_query($conexao, $consultaFaltasES);
+   $FaltasES = mysqli_fetch_array($resultado_FaltasES);
+   
+   $consultaPresencaES = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 4";
+   $resultado_PresencaES = mysqli_query($conexao, $consultaPresencaES);
+   $PresencaES = mysqli_fetch_array($resultado_PresencaES);
+   
+   // calculo Frequencia 
+   $presencasES = (int)$PresencaES['presenca'];
+   $faltasES = (int)$FaltasES['falta'];
+   
+
+   $total_aulasES = $presencasES + $faltasES;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualES = ($presencasES / $total_aulasES) * 100;
+   ?>
                 <div class="card red">
                     <div class="titulo">
                         <h1>Engenharia de Software</h1>
@@ -238,19 +325,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasES; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasES; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualES, 2) . "%"; ?></label>
                     </div>
                 </div>
+   <?php
+   //consulta Interação Humano Computador
+   $consultaFaltasIHC = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 5";
+   $resultado_FaltasIHC = mysqli_query($conexao, $consultaFaltasIHC);
+   $FaltasIHC = mysqli_fetch_array($resultado_FaltasIHC);
+   
+   $consultaPresencaIHC = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 5";
+   $resultado_PresencaIHC = mysqli_query($conexao, $consultaPresencaIHC);
+   $PresencaIHC = mysqli_fetch_array($resultado_PresencaIHC);
+   
+   // calculo Frequencia 
+   $presencasIHC = (int)$PresencaIHC['presenca'];
+   $faltasIHC = (int)$FaltasIHC['falta'];
+   
+
+   $total_aulasIHC = $presencasIHC + $faltasIHC;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualIHC = ($presencasIHC / $total_aulasIHC) * 100;
+   ?>                
                 <div class="card blue">
                     <div class="titulo">
                         <h1>Interação Humano Computador</h1>
@@ -258,19 +365,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasIHC; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasIHC; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualIHC, 2) . "%"; ?></label>
                     </div>
                 </div>
+<?php
+   //consulta Técnicas Avançadas de Programação
+   $consultaFaltasTAP = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 6";
+   $resultado_FaltasTAP = mysqli_query($conexao, $consultaFaltasTAP);
+   $FaltasTAP = mysqli_fetch_array($resultado_FaltasTAP);
+   
+   $consultaPresencaTAP = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 6";
+   $resultado_PresencaTAP = mysqli_query($conexao, $consultaPresencaTAP);
+   $PresencaTAP = mysqli_fetch_array($resultado_PresencaTAP);
+   
+   // calculo Frequencia 
+   $presencasTAP = (int)$PresencaTAP['presenca'];
+   $faltasTAP = (int)$FaltasTAP['falta'];
+   
+
+   $total_aulasTAP = $presencasTAP + $faltasTAP;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualTAP = ($presencasTAP / $total_aulasTAP) * 100;
+   ?>  
                 <div class="card green">
                     <div class="titulo">
                         <h1>Técnicas Avançadas de Programação</h1>
@@ -278,20 +405,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasTAP; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasTAP; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualTAP, 2) . "%"; ?></label>
                     </div>
                 </div>
+                <?php
+   //consulta Técnicas Avançadas de Programação Web e Mobile
+   $consultaFaltasTAPWP = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_FaltasTAPWP = mysqli_query($conexao, $consultaFaltasTAPWM);
+   $FaltasTAPWM = mysqli_fetch_array($resultado_FaltasTAPWM);
+   
+   $consultaPresencaTAPWM = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_PresencaTAPWM = mysqli_query($conexao, $consultaPresencaTAPWM);
+   $PresencaTAPWM = mysqli_fetch_array($resultado_PresencaTAPWM);
+   
+   // calculo Frequencia 
+   $presencasTAPWM = (int)$PresencaTAPWM['presenca'];
+   $faltasTAPWM = (int)$FaltasTAP['falta'];
+   
 
+   $total_aulasTAPWM = $presencasTAPWM + $faltasTAPWM;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualTAP = ($presencasTAPWM / $total_aulasTAPWM) * 100;
+   ?>  
                 <div class="card green">
                     <div class="titulo">
                         <h1>Técnicas Avançadas de Programação Web e Mobile</h1>
@@ -299,17 +445,17 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasTAPWM; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasTAPWM; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualTAPWM, 2) . "%"; ?></label>
                     </div>
                 </div>
 
