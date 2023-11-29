@@ -86,21 +86,21 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Notas/index.html"title="Notas">
+                        <a href="../Notas/index.php"title="Notas">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Faltas/index.html"title="Faltas">
+                        <a href="../Faltas/index.php"title="Faltas">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="./index.html"style="
+                        <a href="./index.php"style="
                         background-color: var(--primary-color);"title="Histórico">
                             <i class='bx bxs-graduation icon'></i>
                             <span class="text nav-text">Histórico</span>

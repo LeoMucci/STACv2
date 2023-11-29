@@ -86,14 +86,14 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Notas/index.html" title="Notas">
+                        <a href="../Notas/index.php" title="Notas">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="./index.html" style="
+                        <a href="./index.php" style="
                         background-color: var(--primary-color);" title="Faltas">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
@@ -101,7 +101,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../Historico/index.html" title="Histórico">
+                        <a href="../Historico/index.php" title="Histórico">
                             <i class='bx bxs-graduation icon'></i>
                             <span class="text nav-text">Histórico</span>
                         </a>
