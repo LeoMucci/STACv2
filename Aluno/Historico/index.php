@@ -228,6 +228,24 @@
     FROM notas WHERE ra = 16 AND idturma = 1";
     $resultado_MediaFinalPI = mysqli_query($conexao, $consultaMediaFinalPI);
     $MediaFinalPI = mysqli_fetch_array($resultado_MediaFinalPI);
+
+  $consultaFaltasPI = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_FaltasPI = mysqli_query($conexao, $consultaFaltasPI);
+   $FaltasPI = mysqli_fetch_array($resultado_FaltasPI);
+   
+   $consultaPresencaPi = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_PresencaPi = mysqli_query($conexao, $consultaPresencaPi);
+   $PresencaPi = mysqli_fetch_array($resultado_PresencaPi);
+   
+   // calculo Frequencia 
+   $presencasPI = (int)$PresencaPi['presenca'];
+   $faltasPI = (int)$FaltasPI['falta'];
+   
+
+   $total_aulasPI = $presencasPI + $faltasPI;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualPI = ($presencasPI / $total_aulasPI) * 100;
     
 ?>
                 <tr>
@@ -239,7 +257,7 @@
                       <?php echo $MediaFinalPI['MediaFinal']; ?>
                   </td>
                   </td>
-                  <td>--</td>
+                  <td><?php echo number_format($frequencia_percentualPI, 2) . "%"; ?></td>
                   <td>Em Curso</td>
                 </tr>
 <?php
@@ -248,6 +266,24 @@
         FROM notas WHERE ra = 16 AND idturma = 2";
         $resultado_MediaFinalBD = mysqli_query($conexao, $consultaMediaFinalBD);
         $MediaFinalBD = mysqli_fetch_array($resultado_MediaFinalBD);
+
+        $consultaFaltasBD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 2";
+        $resultado_FaltasBD = mysqli_query($conexao, $consultaFaltasBD);
+        $FaltasBD = mysqli_fetch_array($resultado_FaltasBD);
+        
+        $consultaPresencaBD = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 2";
+        $resultado_PresencaBD = mysqli_query($conexao, $consultaPresencaBD);
+        $PresencaBD = mysqli_fetch_array($resultado_PresencaBD);
+        
+        // calculo Frequencia 
+        $presencasBD = (int)$PresencaBD['presenca'];
+        $faltasBD = (int)$FaltasBD['falta'];
+        
+     
+        $total_aulasBD = $presencasBD + $faltasBD;
+        
+        // Calculo da frequência em porcentagem
+        $frequencia_percentualBD = ($presencasBD / $total_aulasBD) * 100;
     
 ?>
                 <tr>
@@ -258,7 +294,7 @@
                   <td class="<?php echo ($MediaFinalBD['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalBD['MediaFinal']; ?>
                   </td>
-                  <td>--</td>
+                  <td><?php echo number_format($frequencia_percentualBD, 2) . "%"; ?></td>
                   <td>Em Curso</td>
                 </tr>
 <?php
@@ -267,6 +303,24 @@
     FROM notas WHERE ra = 16 AND idturma = 3";
     $resultado_MediaFinalED = mysqli_query($conexao, $consultaMediaFinalED);
     $MediaFinalED = mysqli_fetch_array($resultado_MediaFinalED);
+
+    $consultaFaltasED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 3";
+    $resultado_FaltasED = mysqli_query($conexao, $consultaFaltasED);
+    $FaltasED = mysqli_fetch_array($resultado_FaltasED);
+    
+    $consultaPresencaED = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 3";
+    $resultado_PresencaED = mysqli_query($conexao, $consultaPresencaED);
+    $PresencaED = mysqli_fetch_array($resultado_PresencaED);
+    
+    // calculo Frequencia 
+    $presencasED = (int)$PresencaED['presenca'];
+    $faltasED = (int)$FaltasED['falta'];
+    
+ 
+    $total_aulasED = $presencasED + $faltasED;
+    
+    // Calculo da frequência em porcentagem
+    $frequencia_percentualED = ($presencasED / $total_aulasED) * 100;
     
 ?>
                 <tr>
@@ -277,7 +331,7 @@
                   <td class="<?php echo ($MediaFinalED['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalED['MediaFinal']; ?>
                   </td>
-                  <td>--</td>
+                  <td><?php echo number_format($frequencia_percentualED, 2) . "%"; ?></td>
                   <td>Em Curso</td>
                 </tr>
 <?php
@@ -286,6 +340,24 @@
     FROM notas WHERE ra = 16 AND idturma = 4";
     $resultado_MediaFinalES = mysqli_query($conexao, $consultaMediaFinalES);
     $MediaFinalES = mysqli_fetch_array($resultado_MediaFinalES);
+    
+    $consultaFaltasES = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 4";
+    $resultado_FaltasES = mysqli_query($conexao, $consultaFaltasES);
+    $FaltasES = mysqli_fetch_array($resultado_FaltasES);
+    
+    $consultaPresencaES = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 4";
+    $resultado_PresencaES = mysqli_query($conexao, $consultaPresencaES);
+    $PresencaES = mysqli_fetch_array($resultado_PresencaES);
+    
+    // calculo Frequencia 
+    $presencasES = (int)$PresencaES['presenca'];
+    $faltasES = (int)$FaltasES['falta'];
+    
+ 
+    $total_aulasES = $presencasES + $faltasES;
+    
+    // Calculo da frequência em porcentagem
+    $frequencia_percentualES = ($presencasES / $total_aulasES) * 100;
     
 ?>
                 <tr>
@@ -296,7 +368,7 @@
                   <td class="<?php echo ($MediaFinalES['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalES['MediaFinal']; ?>
                   </td>
-                  <td>--</td>
+                  <td><?php echo number_format($frequencia_percentualES, 2) . "%"; ?></td>
                   <td>Em Curso</td>
                 </tr>
 <?php
@@ -305,6 +377,24 @@
         FROM notas WHERE ra = 16 AND idturma = 5";
         $resultado_MediaFinalIHC = mysqli_query($conexao, $consultaMediaFinalIHC);
         $MediaFinalIHC = mysqli_fetch_array($resultado_MediaFinalIHC);
+
+        $consultaFaltasIHC = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 5";
+        $resultado_FaltasIHC = mysqli_query($conexao, $consultaFaltasIHC);
+        $FaltasIHC = mysqli_fetch_array($resultado_FaltasIHC);
+        
+        $consultaPresencaIHC = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 5";
+        $resultado_PresencaIHC = mysqli_query($conexao, $consultaPresencaIHC);
+        $PresencaIHC = mysqli_fetch_array($resultado_PresencaIHC);
+        
+        // calculo Frequencia 
+        $presencasIHC = (int)$PresencaIHC['presenca'];
+        $faltasIHC = (int)$FaltasIHC['falta'];
+        
+     
+        $total_aulasIHC = $presencasIHC + $faltasIHC;
+        
+        // Calculo da frequência em porcentagem
+        $frequencia_percentualIHC = ($presencasIHC / $total_aulasIHC) * 100;
     
 ?>
                 <tr>
@@ -315,7 +405,7 @@
                   <td class="<?php echo ($MediaFinalIHC['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalIHC['MediaFinal']; ?>
                  </td>
-                  <td>--</td>
+                  <td><?php echo number_format($frequencia_percentualIHC, 2) . "%"; ?></td>
                   <td>Em Curso</td>
                 </tr>
 <?php
@@ -324,6 +414,24 @@
     FROM notas WHERE ra = 16 AND idturma = 6";
     $resultado_MediaFinalTAP = mysqli_query($conexao, $consultaMediaFinalTAP);
     $MediaFinalTAP = mysqli_fetch_array($resultado_MediaFinalTAP);
+
+    $consultaFaltasTAP = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 6";
+    $resultado_FaltasTAP = mysqli_query($conexao, $consultaFaltasTAP);
+    $FaltasTAP = mysqli_fetch_array($resultado_FaltasTAP);
+    
+    $consultaPresencaTAP = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 6";
+    $resultado_PresencaTAP = mysqli_query($conexao, $consultaPresencaTAP);
+    $PresencaTAP = mysqli_fetch_array($resultado_PresencaTAP);
+    
+    // calculo Frequencia 
+    $presencasTAP = (int)$PresencaTAP['presenca'];
+    $faltasTAP = (int)$FaltasTAP['falta'];
+    
+ 
+    $total_aulasTAP = $presencasTAP + $faltasTAP;
+    
+    // Calculo da frequência em porcentagem
+    $frequencia_percentualTAP = ($presencasTAP / $total_aulasTAP) * 100;
     
 ?>
                 <tr>
@@ -334,7 +442,7 @@
                     <td class="<?php echo ($MediaFinalTAP['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalTAP['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualTAP, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
 <?php
@@ -343,6 +451,25 @@
     FROM notas WHERE ra = 16 AND idturma = 7";
     $resultado_MediaFinalTAPWM = mysqli_query($conexao, $consultaMediaFinalTAPWM);
     $MediaFinalTAPWM = mysqli_fetch_array($resultado_MediaFinalTAPWM);
+
+       //consulta Técnicas Avançadas de Programação Web e Mobile
+   $consultaFaltasTAPWM = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_FaltasTAPWM = mysqli_query($conexao, $consultaFaltasTAPWM);
+   $FaltasTAPWM = mysqli_fetch_array($resultado_FaltasTAPWM);
+   
+   $consultaPresencaTAPWM = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_PresencaTAPWM = mysqli_query($conexao, $consultaPresencaTAPWM);
+   $PresencaTAPWM = mysqli_fetch_array($resultado_PresencaTAPWM);
+   
+   // calculo Frequencia 
+   $presencasTAPWM = (int)$PresencaTAPWM['presenca'];
+   $faltasTAPWM = (int)$FaltasTAPWM['falta'];
+   
+
+   $total_aulasTAPWM = $presencasTAPWM + $faltasTAPWM;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualTAPWM = ($presencasTAPWM / $total_aulasTAPWM) * 100;
     
 ?>
                   <tr>
@@ -353,7 +480,7 @@
                     <td class="<?php echo ($MediaFinalTAPWM['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalTAPWM['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualTAPWM, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
 <?php
@@ -362,6 +489,24 @@
     FROM notas WHERE ra = 16 AND idturma = 8";
     $resultado_MediaFinalICMNED = mysqli_query($conexao, $consultaMediaFinalICMNED);
     $MediaFinalICMNED = mysqli_fetch_array($resultado_MediaFinalICMNED);
+
+    $consultaFaltasICMNED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 8";
+    $resultado_FaltasICMNED= mysqli_query($conexao, $consultaFaltasICMNED);
+    $FaltasICMNED = mysqli_fetch_array($resultado_FaltasICMNED);
+    
+    $consultaPresencaICMNED= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 8";
+    $resultado_PresencaICMNED = mysqli_query($conexao, $consultaPresencaICMNED);
+    $PresencaICMNED = mysqli_fetch_array($resultado_PresencaICMNED);
+    
+    // calculo Frequencia 
+    $presencasICMNED = (int)$PresencaICMNED['presenca'];
+    $faltasICMNED = (int)$FaltasICMNED['falta'];
+    
+ 
+    $total_aulasICMNED = $presencasICMNED + $faltasICMNED;
+    
+    // Calculo da frequência em porcentagem
+    $frequencia_percentualICMNED = ($presencasICMNED / $total_aulasICMNED) * 100;
     
 ?>
                   <tr>
@@ -372,7 +517,7 @@
                     <td class="<?php echo ($MediaFinalICMNED['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalICMNED['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualICMNED, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
 <?php
@@ -381,6 +526,24 @@
         FROM notas WHERE ra = 16 AND idturma = 9";
         $resultado_MediaFinalGAPS = mysqli_query($conexao, $consultaMediaFinalGAPS);
         $MediaFinalGAPS = mysqli_fetch_array($resultado_MediaFinalGAPS);
+
+        $consultaFaltasGAPS = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 9";
+        $resultado_FaltasGAPS= mysqli_query($conexao, $consultaFaltasGAPS);
+        $FaltasGAPS = mysqli_fetch_array($resultado_FaltasGAPS);
+        
+        $consultaPresencaGAPS= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 9";
+        $resultado_PresencaGAPS = mysqli_query($conexao, $consultaPresencaGAPS);
+        $PresencaGAPS = mysqli_fetch_array($resultado_PresencaGAPS);
+        
+        // calculo Frequencia 
+        $presencasGAPS = (int)$PresencaGAPS['presenca'];
+        $faltasGAPS = (int)$FaltasGAPS['falta'];
+        
+     
+        $total_aulasGAPS = $presencasGAPS + $faltasGAPS;
+        
+        // Calculo da frequência em porcentagem
+        $frequencia_percentualGAPS = ($presencasGAPS / $total_aulasGAPS) * 100;
     
 ?>
                   <tr>
@@ -391,7 +554,7 @@
                     <td class="<?php echo ($MediaFinalGAPS['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalGAPS['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualGAPS, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
 <?php
@@ -400,6 +563,24 @@
         FROM notas WHERE ra = 16 AND idturma = 10";
         $resultado_MediaFinalOCSO = mysqli_query($conexao, $consultaMediaFinalOCSO);
         $MediaFinalOCSO = mysqli_fetch_array($resultado_MediaFinalOCSO);
+
+        $consultaFaltasOCSO = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 10";
+        $resultado_FaltasOCSO= mysqli_query($conexao, $consultaFaltasGAPS);
+        $FaltasOCSO = mysqli_fetch_array($resultado_FaltasOCSO);
+        
+        $consultaPresencaOCSO= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 10";
+        $resultado_PresencaOCSO = mysqli_query($conexao, $consultaPresencaOCSO);
+        $PresencaOCSO = mysqli_fetch_array($resultado_PresencaOCSO);
+        
+        // calculo Frequencia 
+        $presencasOCSO = (int)$PresencaOCSO['presenca'];
+        $faltasOCSO = (int)$FaltasOCSO['falta'];
+        
+     
+        $total_aulasOCSO = $presencasOCSO + $faltasOCSO;
+        
+        // Calculo da frequência em porcentagem
+        $frequencia_percentualOCSO = ($presencasOCSO / $total_aulasOCSO) * 100;
     
 ?>
                   <tr>
@@ -410,7 +591,7 @@
                     <td class="<?php echo ($MediaFinalOCSO['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalOCSO['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualOCSO, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
                   <tr>
@@ -420,7 +601,7 @@
                     <td><input type="checkbox" checked="checked" onclick="return false;"></td>
                     <div class="checkmark"></div>
                     <td class="vermelho">0</td>
-                    <td>--</td>
+                    <td>0%</td>
                     <td>Dispensado por Proficiência</td>
                   </tr>
                   <tr>
@@ -429,7 +610,7 @@
                     <td>20231</td>
                     <td><input type="checkbox" checked="checked" onclick="return false;"></td>
                     <td class="vermelho">0</td>
-                    <td>--</td>
+                    <td>0%</td>
                     <td>Dispensado por Proficiência</td>
                   </tr>
 <?php
@@ -439,6 +620,23 @@
     $resultado_MediaFinalMD = mysqli_query($conexao, $consultaMediaFinalMD);
     $MediaFinalMD = mysqli_fetch_array($resultado_MediaFinalMD);
     
+    $consultaFaltasMD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 11";
+    $resultado_FaltasMD= mysqli_query($conexao, $consultaFaltasMD);
+    $FaltasMD = mysqli_fetch_array($resultado_FaltasMD);
+    
+    $consultaPresencaMD= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 11";
+    $resultado_PresencaMD = mysqli_query($conexao, $consultaPresencaMD);
+    $PresencaMD = mysqli_fetch_array($resultado_PresencaMD);
+    
+    // calculo Frequencia 
+    $presencasMD = (int)$PresencaMD['presenca'];
+    $faltasMD = (int)$FaltasMD['falta'];
+    
+ 
+    $total_aulasMD = $presencasMD + $faltasMD;
+    
+    // Calculo da frequência em porcentagem
+    $frequencia_percentualMD = ($presencasMD / $total_aulasMD) * 100;
 ?>
                   <tr>
                     <td>MAT028</td>
@@ -448,7 +646,7 @@
                     <td class="<?php echo ($MediaFinalMD['MediaFinal'] < 6) ? 'vermelho' : 'verde'; ?>">
                       <?php echo $MediaFinalMD['MediaFinal']; ?>
                     </td>
-                    <td>--</td>
+                    <td><?php echo number_format($frequencia_percentualMD, 2) . "%"; ?></td>
                     <td>Em Curso</td>
                   </tr>
                 </table>
