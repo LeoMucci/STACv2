@@ -69,14 +69,14 @@
 
                 <class class="menu-links">
                     <li class="nav-link">
-                        <a href="../HomeP/index.html">
+                        <a href="../../HomeP/index.html">
                             <i class='bx bxs-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../AddNotas/ListaNotas/index.html" style="
+                        <a href="../ListaNotas/index.php" style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
@@ -84,7 +84,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../AddFaltas/index.html">
+                        <a href="../../AddFaltas/TurmasFalta/index.php">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
                         </a>
@@ -273,7 +273,7 @@ if (!empty($_GET['idturma'])) {
         });
 
         function irParaPaginaa() {
-        window.location.href = '../index.php';
+        window.location.href = '../ListaNotas/index.php';
     }
         // Adicione um ouvinte de evento ao botão de alternância de tema, se necessário
         const themeToggleButton = document.querySelector('.theme-toggle-button');

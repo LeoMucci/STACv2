@@ -76,7 +76,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../../AddNotas/ListaNotas/index.html" >
+                        <a href="../../AddNotas/ListaNotas/index.php" >
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>

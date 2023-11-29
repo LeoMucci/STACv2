@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="./index.html" style="
+                        <a href="./index.php" style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>

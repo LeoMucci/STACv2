@@ -64,7 +64,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../../AddFaltas/TurmasFalta/index.php"style="
+                        <a href="./index.php"style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>

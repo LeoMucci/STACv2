@@ -69,21 +69,21 @@
 
                 <class class="menu-links">
                     <li class="nav-link">
-                        <a href="../../HomeP/index.html">
+                        <a href="../../../HomeP/index.html">
                             <i class='bx bxs-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../../AddNotas/ListaNotas/index.html" >
+                        <a href="../../../AddNotas/ListaNotas/index.php" >
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="../TurmasFalta/index.php" style="
+                        <a href="../../TurmasFalta/index.php" style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
