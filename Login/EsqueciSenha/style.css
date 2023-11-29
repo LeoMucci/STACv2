@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 html,body{
-    background: #35373a;
+    background: #15537C;
     font-family: 'Poppins', sans-serif;
 }
 ::selection{
@@ -30,7 +30,7 @@ html,body{
    font-size: 15px;
 }
 .container .form form .button{
-    background: #b20000;
+    background: #15537C;
     color: #fff;
     font-size: 17px;
     font-weight: 500;
@@ -50,4 +50,13 @@ html,body{
 }
 .container .row .alert{
     font-size: 14px;
+}
+
+#icon {
+    margin-top: 15%;
+    margin-bottom: 25%;
+    left: 30%;
+    width: 35%;
+    max-width: 200px;
+    position: relative;
 }
