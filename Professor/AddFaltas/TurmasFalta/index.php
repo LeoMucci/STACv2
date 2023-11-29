@@ -110,7 +110,7 @@
       exit;
     }
 
-    $consultaIdTurma = "select * from Turma where idProf = 3 order by idTurma;";
+    $consultaIdTurma = "select * from Turma where idProf = 1 order by idTurma;";
     $resultado_idTurma = mysqli_query($conexao,$consultaIdTurma);
     
 ?>
@@ -129,8 +129,10 @@
                 <div class="card">
                   <section class="bottom">
                     <ul class="users">
-                      
-                         <span class="user-name" >ADS AMS 4</span>
+                      <center>
+                      <span class="user-name" >ADS AMS 4</span>
+                      </center>
+                         
                         
                         
 

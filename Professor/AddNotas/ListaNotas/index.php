@@ -130,7 +130,10 @@
                   <section class="bottom">
                     <ul class="users">
                       
-                         <span class="user-name" >ADS AMS 4</span>
+                    <center>
+                    <span class="user-name" >ADS AMS 4</span>   
+                    </center>
+                        
                         
                         
 

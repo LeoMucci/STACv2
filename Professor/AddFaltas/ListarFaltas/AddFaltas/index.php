@@ -50,7 +50,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="../images/soLogo.png" alt="">
+                    <img src="../../images/soLogo.png"alt="">
                 </span>
 
                 <div class="text logo-text">
