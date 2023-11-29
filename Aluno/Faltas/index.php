@@ -418,10 +418,10 @@
                         <label id="frequencia-valor"><?php echo number_format($frequencia_percentualTAP, 2) . "%"; ?></label>
                     </div>
                 </div>
-                <?php
+<?php
    //consulta Técnicas Avançadas de Programação Web e Mobile
    $consultaFaltasTAPWM = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
-   $resultado_FaltasTAPW = mysqli_query($conexao, $consultaFaltasTAPWM);
+   $resultado_FaltasTAPWM = mysqli_query($conexao, $consultaFaltasTAPWM);
    $FaltasTAPWM = mysqli_fetch_array($resultado_FaltasTAPWM);
    
    $consultaPresencaTAPWM = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 7";
@@ -430,13 +430,13 @@
    
    // calculo Frequencia 
    $presencasTAPWM = (int)$PresencaTAPWM['presenca'];
-   $faltasTAPWM = (int)$FaltasTAP['falta'];
+   $faltasTAPWM = (int)$FaltasTAPWM['falta'];
    
 
    $total_aulasTAPWM = $presencasTAPWM + $faltasTAPWM;
    
    // Calculo da frequência em porcentagem
-   $frequencia_percentualTAP = ($presencasTAPWM / $total_aulasTAPWM) * 100;
+   $frequencia_percentualTAPWM = ($presencasTAPWM / $total_aulasTAPWM) * 100;
    ?>  
                 <div class="card green">
                     <div class="titulo">

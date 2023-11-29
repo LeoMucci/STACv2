@@ -110,7 +110,7 @@
       exit;
     }
 
-    $consultaIdTurma = "select * from Turma where idProf = 1 order by idTurma;";
+    $consultaIdTurma = "select * from Turma where idProf = 6 order by idTurma;";
     $resultado_idTurma = mysqli_query($conexao,$consultaIdTurma);
     
 ?>
