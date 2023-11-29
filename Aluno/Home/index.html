@@ -290,6 +290,28 @@
                 modeText.innerText = 'Light mode';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    var userLink = document.querySelector('.user-link');
+    var userPopup = document.querySelector('.user-popup');
+    var linkClicked = false;
+
+    if (userLink && userPopup) {
+        userLink.addEventListener('click', function () {
+            // Toggle a classe 'visible' na userPopup
+            userPopup.classList.toggle('visible');
+            linkClicked = !linkClicked; // Inverte o valor
+        });
+
+        userLink.addEventListener('mouseleave', function () {
+            if (!linkClicked) {
+                userPopup.style.display = 'none';
+            }
+        });
+    }
+});
+
+
         document.addEventListener('DOMContentLoaded', function () {
     var userLink = document.querySelector('.user-link');
     var userPopup = document.querySelector('.user-popup');
@@ -299,13 +321,9 @@
         userPopup.style.display = 'block';
     });
 
-    userLink.addEventListener('mouseleave', function () {
-        userPopup.style.display = 'none';
-    });
 
-    sidebar.addEventListener('click', function () {
-        userPopup.classList.toggle('active-sidebar');
-    });
+
+
 });
 
 
