@@ -420,8 +420,8 @@
                 </div>
                 <?php
    //consulta Técnicas Avançadas de Programação Web e Mobile
-   $consultaFaltasTAPWP = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
-   $resultado_FaltasTAPWP = mysqli_query($conexao, $consultaFaltasTAPWM);
+   $consultaFaltasTAPWM = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_FaltasTAPW = mysqli_query($conexao, $consultaFaltasTAPWM);
    $FaltasTAPWM = mysqli_fetch_array($resultado_FaltasTAPWM);
    
    $consultaPresencaTAPWM = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 7";
