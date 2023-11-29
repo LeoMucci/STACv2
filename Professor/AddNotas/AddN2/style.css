@@ -923,7 +923,7 @@ table th {
   padding-bottom: 6px;
   font-weight: 400;
   border-width: 3px;
-  border-image: linear-gradient(to right, #b20000, #971108);
+  border-image: linear-gradient(to right, #15537C, #5696c0);
   border-image-slice: 1;
 }
 
@@ -974,19 +974,19 @@ table th {
   font-weight: bold;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: #b20000;
+  color: #15537C;
   transition: all 1000ms;
   font-size: 15px;
   position: relative;
   overflow: hidden;
-  outline: 2px solid #b20000;
+  outline: 2px solid #15537C;
 }
 
 .buttonn:hover {
   color: #ffffff;
   transform: scale(1.1);
-  outline: 2px solid #b20000;
-  box-shadow: 4px 5px 17px -4px #b20000;
+  outline: 2px solid #15537C;
+  box-shadow: 4px 5px 17px -4px #15537C;
 }
 
 .buttonn::before {
@@ -996,7 +996,7 @@ table th {
   top: 0;
   width: 0;
   height: 100%;
-  background-color: #b20000;
+  background-color: #15537C;
   transform: skewX(45deg);
   z-index: -1;
   transition: width 1000ms;
