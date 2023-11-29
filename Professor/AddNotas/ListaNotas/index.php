@@ -65,7 +65,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="../../AddFaltas/TurmasFaltas/index.php">
+                        <a href="../../AddFaltas/TurmasFalta/index.php">
                             <i class='bx bx-calendar-check icon'></i>
                             <span class="text nav-text">Faltas</span>
                         </a>
@@ -131,7 +131,7 @@
                     <ul class="users">
                       
                     <center>
-                    <span class="user-name" >ADS AMS 4</span>   
+                    <span class="user-name" >ADS AMS 4 - Notas</span>   
                     </center>
                         
                         
