@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="./index.html" >
+                        <a href="../../AddNotas/ListaNotas/index.php" >
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Notas</span>
                         </a>
@@ -130,7 +130,7 @@
                   <section class="bottom">
                     <ul class="users">
                       <center>
-                      <span class="user-name" >ADS AMS 4</span>
+                      <span class="user-name" >ADS AMS 4 - Faltas</span>
                       </center>
                          
                         
