@@ -458,7 +458,26 @@
                         <label id="frequencia-valor"><?php echo number_format($frequencia_percentualTAPWM, 2) . "%"; ?></label>
                     </div>
                 </div>
+                <?php
+   //consulta Inteligência Corporativa e Modelos de Negócios na Era Digital
+   $consultaFaltasICMNED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 8";
+   $resultado_FaltasICMNED= mysqli_query($conexao, $consultaFaltasICMNED);
+   $FaltasICMNED = mysqli_fetch_array($resultado_FaltasICMNED);
+   
+   $consultaPresencaICMNED= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 8";
+   $resultado_PresencaICMNED = mysqli_query($conexao, $consultaPresencaICMNED);
+   $PresencaICMNED = mysqli_fetch_array($resultado_PresencaICMNED);
+   
+   // calculo Frequencia 
+   $presencasICMNED = (int)$PresencaICMNED['presenca'];
+   $faltasICMNED = (int)$FaltasICMNED['falta'];
+   
 
+   $total_aulasICMNED = $presencasICMNED + $faltasICMNED;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualICMNED = ($presencasICMNED / $total_aulasICMNED) * 100;
+   ?> 
                 <div class="card green">
                     <div class="titulo">
                         <h1>Inteligência Corporativa e Modelos de Negócios na Era Digital</h1>
@@ -466,20 +485,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasICMNED; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasICMNED; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualICMNED, 2) . "%"; ?></label>
                     </div>
                 </div>
+                <?php
+   //consulta Gestão Ágil de Projetos de Software
+   $consultaFaltasGAPS = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 9";
+   $resultado_FaltasGAPS= mysqli_query($conexao, $consultaFaltasGAPS);
+   $FaltasGAPS = mysqli_fetch_array($resultado_FaltasGAPS);
+   
+   $consultaPresencaGAPS= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 9";
+   $resultado_PresencaGAPS = mysqli_query($conexao, $consultaPresencaGAPS);
+   $PresencaGAPS = mysqli_fetch_array($resultado_PresencaGAPS);
+   
+   // calculo Frequencia 
+   $presencasGAPS = (int)$PresencaGAPS['presenca'];
+   $faltasGAPS = (int)$FaltasGAPS['falta'];
+   
 
+   $total_aulasGAPS = $presencasGAPS + $faltasGAPS;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualGAPS = ($presencasGAPS / $total_aulasGAPS) * 100;
+   ?> 
                 <div class="card green">
                     <div class="titulo">
                         <h1>Gestão Ágil de Projetos de Software</h1>
@@ -487,20 +525,39 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasGAPS; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasGAPS; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualGAPS, 2) . "%"; ?></label>
                     </div>
                 </div>
+<?php
+   //consulta Organização de Computadores e Sistemas Operacionais 
+   $consultaFaltasOCSO = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 10";
+   $resultado_FaltasOCSO= mysqli_query($conexao, $consultaFaltasGAPS);
+   $FaltasOCSO = mysqli_fetch_array($resultado_FaltasOCSO);
+   
+   $consultaPresencaOCSO= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 10";
+   $resultado_PresencaOCSO = mysqli_query($conexao, $consultaPresencaOCSO);
+   $PresencaOCSO = mysqli_fetch_array($resultado_PresencaOCSO);
+   
+   // calculo Frequencia 
+   $presencasOCSO = (int)$PresencaOCSO['presenca'];
+   $faltasOCSO = (int)$FaltasOCSO['falta'];
+   
 
+   $total_aulasOCSO = $presencasOCSO + $faltasOCSO;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualOCSO = ($presencasOCSO / $total_aulasOCSO) * 100;
+   ?> 
                 <div class="card green">
                     <div class="titulo">
                         <h1>Organização de Computadores e Sistemas Operacionais </h1>
@@ -508,20 +565,40 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasOCSO; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasOCSO; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualOCSO, 2) . "%"; ?></label>
                     </div>
                 </div>
 
+                <?php
+   //consulta Matemática Discreta
+   $consultaFaltasMD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 11";
+   $resultado_FaltasMD= mysqli_query($conexao, $consultaFaltasMD);
+   $FaltasMD = mysqli_fetch_array($resultado_FaltasMD);
+   
+   $consultaPresencaMD= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 11";
+   $resultado_PresencaMD = mysqli_query($conexao, $consultaPresencaMD);
+   $PresencaMD = mysqli_fetch_array($resultado_PresencaMD);
+   
+   // calculo Frequencia 
+   $presencasMD = (int)$PresencaMD['presenca'];
+   $faltasMD = (int)$FaltasMD['falta'];
+   
+
+   $total_aulasMD = $presencasMD + $faltasMD;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualMD = ($presencasMD / $total_aulasMD) * 100;
+   ?> 
                 <div class="card green">
                     <div class="titulo">
                         <h1>Matemática Discreta</h1>
@@ -529,17 +606,17 @@
 
                     <div class="label-value-pair">
                         <label for="presenca">Presença</label>
-                        <label id="presenca-valor">10</label>
+                        <label id="presenca-valor"><?php echo $presencasMD; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="ausencia">Ausência</label>
-                        <label id="ausencia-valor">10</label>
+                        <label id="ausencia-valor"><?php echo $faltasMD; ?></label>
                     </div>
 
                     <div class="label-value-pair">
                         <label for="frequencia">Frequência</label>
-                        <label id="frequencia-valor">100%</label>
+                        <label id="frequencia-valor"><?php echo number_format($frequencia_percentualMD, 2) . "%"; ?></label>
                     </div>
                 </div>
 
