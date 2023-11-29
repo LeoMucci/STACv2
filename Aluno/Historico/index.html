@@ -116,7 +116,7 @@
 
                     <li class="nav-link">
                         <a href="../Horario/index.html"title="Horário">
-                            <i class='bx bxs-grid icon'></i>
+                            <i class='bx bxs-time-five icon'></i>
                             <span class="text nav-text">Horário</span>
                         </a>
                     </li>

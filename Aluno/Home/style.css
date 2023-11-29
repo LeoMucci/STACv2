@@ -734,6 +734,7 @@ ul {
 
 .user-popup {
   display: none;
+  z-index: 999;
   position: fixed;
   color: white;
   top: 50px;
