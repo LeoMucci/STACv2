@@ -152,7 +152,7 @@
                     while ($Alunos = mysqli_fetch_array($resultado_Alunos)) {
                         ?>
                         <div class='tab'>
-                            <h4 class='aa' style='color: #ffffff;'>Inserir Faltas</h4>
+                            <h4 class='aa' style='color: #ffffff;'>Fazer Chamada</h4>
 
                             <div class="form__group field">
                                 <input type="input" class="form__field" placeholder="Nome do Aluno"  readonly value="<?= $Alunos['Nome'] ?>">

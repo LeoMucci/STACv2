@@ -14,7 +14,7 @@
 
 <body>
 
-    <div id="video-background">
+    <div id="minhaDiv" class="minhaClasse">
         <video id="bg-video" autoplay muted loop>
             <source src="images/topoihope - Trim.mp4" type="video/mp4">
             <img src="caminho_da_imagem.jpg" alt="Plano de fundo estático">
@@ -32,6 +32,8 @@
             <center>
             <img src="images/Logo Stac.jpg" id="icon" alt="logo" />
 
+            
+            
             </center>
                 <p style="font-size: 20px;"><b>Login</b></p>
             
@@ -60,8 +62,16 @@
                 </a>
             </center>
             </form>
-            <p><a href="./EsqueciSenha/index.html" class="a2">Esqueçeu a senha?</a></p>
+            <p><a href="./EsqueciSenha/index.html" class="a2">Esqueceu a senha?</a></p>
+
+            <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" class="toggleButton" onclick="alternarClasse()">
+                <span class="slider"></span>
+              </label>
+            </div>
         </div>
+        
 
 
     </div>
@@ -69,6 +79,20 @@
     </div>
 
     <script>
+
+function alternarClasse() {
+        var minhaDiv = document.getElementById('minhaDiv');
+        
+        // Alternar entre adicionar e remover a classe
+        minhaDiv.classList.toggle('classeDesativada');
+
+        // Alternar a classe do botão para indicar o estado
+        var toggleButton = document.querySelector('.toggleButton');
+        toggleButton.classList.toggle('active', minhaDiv.classList.contains('classeDesativada'));
+
+        // Salvar preferências do usuário (usando cookies neste exemplo)
+        document.cookie = "classeDesativada=" + minhaDiv.classList.contains('classeDesativada') + "; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+    }
         function mascara(i){
    
    var v = i.value;

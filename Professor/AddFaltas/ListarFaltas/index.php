@@ -135,7 +135,7 @@ if (!empty($_GET['idturma'])) {
     <div class="homi">
         <div class="blure">
             <div id="buttons">
-                <a href="./AddFaltas/index.php?idTurma=<?php echo $idTurma; ?>"><button class="bn5">Add Faltas</button></a>
+                <a href="./AddFaltas/index.php?idTurma=<?php echo $idTurma; ?>"><button class="bn5">Chamada</button></a>
             </div>
   
             <table>

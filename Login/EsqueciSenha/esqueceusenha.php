@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($update_result) {
                 // Redirecionar o usuário para a página de redefinição de senha com o token
-                echo "<script>alert('Token gerado com sucesso. Redirecionando para a página de redefinição de senha.'); window.location='redefinirsenha.php?token=$token';</script>";
+                echo "<script>window.location='redefinirsenha.php?token=$token';</script>";
                 exit;
             } else {
                 echo "<script>alert('Erro ao atualizar o token no banco de dados.');</script>";
