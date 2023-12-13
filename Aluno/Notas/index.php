@@ -215,6 +215,25 @@
     $dataN3FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN3']));
     $dataN4FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN4']));
     $dataN5FormatadaPi = date('d/m/Y', strtotime($dataNotasPi['DataN5']));
+
+       //consulta Projeto Integrador I
+   $consultaFaltasPI = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_FaltasPI = mysqli_query($conexao, $consultaFaltasPI);
+   $FaltasPI = mysqli_fetch_array($resultado_FaltasPI);
+   
+   $consultaPresencaPi = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 1";
+   $resultado_PresencaPi = mysqli_query($conexao, $consultaPresencaPi);
+   $PresencaPi = mysqli_fetch_array($resultado_PresencaPi);
+   
+   // calculo Frequencia 
+   $presencasPI = (int)$PresencaPi['presenca'];
+   $faltasPI = (int)$FaltasPI['falta'];
+   
+
+   $total_aulasPI = $presencasPI + $faltasPI;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualPI = ($presencasPI / $total_aulasPI) * 100;
 ?>
 
 <div class="container-lg"><b>Notas</b></div>
@@ -234,8 +253,8 @@
                         <h5>Projeto Integrador I</h5>
                         <div class="card-info">
                             <p>Média final: <?php echo $MediaFinalPI['MediaFinal']; ?></p>
-                            <p>Faltas:**</p>
-                            <p>% Frequência: **</p>
+                            <p>Faltas: <?php echo $faltasPI; ?></p>
+                            <p>% Frequência: <?php echo number_format($frequencia_percentualPI, 2) . "%"; ?></p>
                         </div>
                         <div class="card-table">
                             <table>
@@ -299,6 +318,25 @@
     $dataN3FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN3']));
     $dataN4FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN4']));
     $dataN5FormatadaBD = date('d/m/Y', strtotime($dataNotasBD['DataN5']));
+
+    //consulta Técnicas Avançadas de Banco de Dados Relacional e Não Relacional
+   $consultaFaltasBD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 2";
+   $resultado_FaltasBD = mysqli_query($conexao, $consultaFaltasBD);
+   $FaltasBD = mysqli_fetch_array($resultado_FaltasBD);
+   
+   $consultaPresencaBD = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 2";
+   $resultado_PresencaBD = mysqli_query($conexao, $consultaPresencaBD);
+   $PresencaBD = mysqli_fetch_array($resultado_PresencaBD);
+   
+   // calculo Frequencia 
+   $presencasBD = (int)$PresencaBD['presenca'];
+   $faltasBD = (int)$FaltasBD['falta'];
+   
+
+   $total_aulasBD = $presencasBD + $faltasBD;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualBD = ($presencasBD / $total_aulasBD) * 100;
 ?>
         <div class="card-container">
             <div class="card">
@@ -316,8 +354,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalBD['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasBD; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualBD, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -380,6 +418,25 @@
     $dataN3FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN3']));
     $dataN4FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN4']));
     $dataN5FormatadaED = date('d/m/Y', strtotime($dataNotasED['DataN5']));
+
+    //consulta Estruturas de Dados
+   $consultaFaltasED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 3";
+   $resultado_FaltasED = mysqli_query($conexao, $consultaFaltasED);
+   $FaltasED = mysqli_fetch_array($resultado_FaltasED);
+   
+   $consultaPresencaED = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 3";
+   $resultado_PresencaED = mysqli_query($conexao, $consultaPresencaED);
+   $PresencaED = mysqli_fetch_array($resultado_PresencaED);
+   
+   // calculo Frequencia 
+   $presencasED = (int)$PresencaED['presenca'];
+   $faltasED = (int)$FaltasED['falta'];
+   
+
+   $total_aulasED = $presencasED + $faltasED;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualED = ($presencasED / $total_aulasED) * 100;
 ?>        
     
         <div class="card-container">
@@ -397,8 +454,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalED['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasED; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualED, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -461,6 +518,25 @@
     $dataN3FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN3']));
     $dataN4FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN4']));
     $dataN5FormatadaES = date('d/m/Y', strtotime($dataNotasES['DataN5']));
+
+    //consulta Engenharia de Software
+   $consultaFaltasES = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 4";
+   $resultado_FaltasES = mysqli_query($conexao, $consultaFaltasES);
+   $FaltasES = mysqli_fetch_array($resultado_FaltasES);
+   
+   $consultaPresencaES = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 4";
+   $resultado_PresencaES = mysqli_query($conexao, $consultaPresencaES);
+   $PresencaES = mysqli_fetch_array($resultado_PresencaES);
+   
+   // calculo Frequencia 
+   $presencasES = (int)$PresencaES['presenca'];
+   $faltasES = (int)$FaltasES['falta'];
+   
+
+   $total_aulasES = $presencasES + $faltasES;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualES = ($presencasES / $total_aulasES) * 100;
 ?> 
         <div class="card-container">
             <div class="card">
@@ -478,8 +554,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalES['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasES; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualES, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -542,6 +618,25 @@
     $dataN3FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN3']));
     $dataN4FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN4']));
     $dataN5FormatadaIHC = date('d/m/Y', strtotime($dataNotasIHC['DataN5']));
+
+    //consulta Interação Humano Computador
+   $consultaFaltasIHC = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 5";
+   $resultado_FaltasIHC = mysqli_query($conexao, $consultaFaltasIHC);
+   $FaltasIHC = mysqli_fetch_array($resultado_FaltasIHC);
+   
+   $consultaPresencaIHC = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 5";
+   $resultado_PresencaIHC = mysqli_query($conexao, $consultaPresencaIHC);
+   $PresencaIHC = mysqli_fetch_array($resultado_PresencaIHC);
+   
+   // calculo Frequencia 
+   $presencasIHC = (int)$PresencaIHC['presenca'];
+   $faltasIHC = (int)$FaltasIHC['falta'];
+   
+
+   $total_aulasIHC = $presencasIHC + $faltasIHC;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualIHC = ($presencasIHC / $total_aulasIHC) * 100;
 ?>     
         <div class="card-container">
             <div class="card">
@@ -559,8 +654,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalIHC['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasIHC; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualIHC, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -624,7 +719,26 @@
     $dataN3FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN3']));
     $dataN4FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN4']));
     $dataN5FormatadaTAP = date('d/m/Y', strtotime($dataNotasTAP['DataN5']));
-?>         
+
+    //consulta Técnicas Avançadas de Programação
+   $consultaFaltasTAP = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 6";
+   $resultado_FaltasTAP = mysqli_query($conexao, $consultaFaltasTAP);
+   $FaltasTAP = mysqli_fetch_array($resultado_FaltasTAP);
+   
+   $consultaPresencaTAP = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 6";
+   $resultado_PresencaTAP = mysqli_query($conexao, $consultaPresencaTAP);
+   $PresencaTAP = mysqli_fetch_array($resultado_PresencaTAP);
+   
+   // calculo Frequencia 
+   $presencasTAP = (int)$PresencaTAP['presenca'];
+   $faltasTAP = (int)$FaltasTAP['falta'];
+   
+
+   $total_aulasTAP = $presencasTAP + $faltasTAP;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualTAP = ($presencasTAP / $total_aulasTAP) * 100;
+   ?>          
         <div class="card-container">
             <div class="card">
                 <div class="materia">
@@ -638,8 +752,8 @@
                 
                 <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalTAP['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasTAP; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualTAP, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -703,6 +817,26 @@
     $dataN3FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN3']));
     $dataN4FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN4']));
     $dataN5FormatadaTAPWM = date('d/m/Y', strtotime($dataNotasTAPWM['DataN5']));
+
+    //consulta Técnicas Avançadas de Programação Web e Mobile
+   $consultaFaltasTAPWM = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_FaltasTAPWM = mysqli_query($conexao, $consultaFaltasTAPWM);
+   $FaltasTAPWM = mysqli_fetch_array($resultado_FaltasTAPWM);
+   
+   $consultaPresencaTAPWM = "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 7";
+   $resultado_PresencaTAPWM = mysqli_query($conexao, $consultaPresencaTAPWM);
+   $PresencaTAPWM = mysqli_fetch_array($resultado_PresencaTAPWM);
+   
+   // calculo Frequencia 
+   $presencasTAPWM = (int)$PresencaTAPWM['presenca'];
+   $faltasTAPWM = (int)$FaltasTAPWM['falta'];
+   
+
+   $total_aulasTAPWM = $presencasTAPWM + $faltasTAPWM;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualTAPWM = ($presencasTAPWM / $total_aulasTAPWM) * 100;
+    
 ?>     
         <div class="card-container">
             <div class="card">
@@ -720,8 +854,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalTAPWM['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasTAPWM; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualTAPWM, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -784,6 +918,25 @@
     $dataN3FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN3']));
     $dataN4FormatadaICMNED= date('d/m/Y', strtotime($dataNotasICMNED['DataN4']));
     $dataN5FormatadaICMNED = date('d/m/Y', strtotime($dataNotasICMNED['DataN5']));
+
+     //consulta Inteligência Corporativa e Modelos de Negócios na Era Digital
+   $consultaFaltasICMNED = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 8";
+   $resultado_FaltasICMNED= mysqli_query($conexao, $consultaFaltasICMNED);
+   $FaltasICMNED = mysqli_fetch_array($resultado_FaltasICMNED);
+   
+   $consultaPresencaICMNED= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 8";
+   $resultado_PresencaICMNED = mysqli_query($conexao, $consultaPresencaICMNED);
+   $PresencaICMNED = mysqli_fetch_array($resultado_PresencaICMNED);
+   
+   // calculo Frequencia 
+   $presencasICMNED = (int)$PresencaICMNED['presenca'];
+   $faltasICMNED = (int)$FaltasICMNED['falta'];
+   
+
+   $total_aulasICMNED = $presencasICMNED + $faltasICMNED;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualICMNED = ($presencasICMNED / $total_aulasICMNED) * 100;
 ?>    
         <div class="card-container">
             <div class="card">
@@ -801,8 +954,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalICMNED['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasICMNED; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualICMNED, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -866,6 +1019,24 @@
     $dataN3FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN3']));
     $dataN4FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN4']));
     $dataN5FormatadaGAPS = date('d/m/Y', strtotime($dataNotasGAPS['DataN5']));
+
+    $consultaFaltasGAPS = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 9";
+   $resultado_FaltasGAPS= mysqli_query($conexao, $consultaFaltasGAPS);
+   $FaltasGAPS = mysqli_fetch_array($resultado_FaltasGAPS);
+   
+   $consultaPresencaGAPS= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 9";
+   $resultado_PresencaGAPS = mysqli_query($conexao, $consultaPresencaGAPS);
+   $PresencaGAPS = mysqli_fetch_array($resultado_PresencaGAPS);
+   
+   // calculo Frequencia 
+   $presencasGAPS = (int)$PresencaGAPS['presenca'];
+   $faltasGAPS = (int)$FaltasGAPS['falta'];
+   
+
+   $total_aulasGAPS = $presencasGAPS + $faltasGAPS;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualGAPS = ($presencasGAPS / $total_aulasGAPS) * 100;
 ?>         
         <div class="card-container">
             <div class="card">
@@ -883,8 +1054,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalGAPS['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasGAPS; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualGAPS, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -948,6 +1119,25 @@
     $dataN3FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN3']));
     $dataN4FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN4']));
     $dataN5FormatadaOCSO = date('d/m/Y', strtotime($dataNotasOCSO['DataN5']));
+
+     //consulta Organização de Computadores e Sistemas Operacionais 
+   $consultaFaltasOCSO = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 10";
+   $resultado_FaltasOCSO= mysqli_query($conexao, $consultaFaltasGAPS);
+   $FaltasOCSO = mysqli_fetch_array($resultado_FaltasOCSO);
+   
+   $consultaPresencaOCSO= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 10";
+   $resultado_PresencaOCSO = mysqli_query($conexao, $consultaPresencaOCSO);
+   $PresencaOCSO = mysqli_fetch_array($resultado_PresencaOCSO);
+   
+   // calculo Frequencia 
+   $presencasOCSO = (int)$PresencaOCSO['presenca'];
+   $faltasOCSO = (int)$FaltasOCSO['falta'];
+   
+
+   $total_aulasOCSO = $presencasOCSO + $faltasOCSO;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualOCSO = ($presencasOCSO / $total_aulasOCSO) * 100;
 ?> 
         <div class="card-container">
             <div class="card">
@@ -965,8 +1155,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalOCSO['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasOCSO; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualOCSO, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
@@ -1030,6 +1220,26 @@
     $dataN3FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN3']));
     $dataN4FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN4']));
     $dataN5FormatadaMD = date('d/m/Y', strtotime($dataNotasMD['DataN5']));
+
+
+     //consulta Matemática Discreta
+   $consultaFaltasMD = "SELECT falta FROM faltas WHERE ra = 16 AND idturma = 11";
+   $resultado_FaltasMD= mysqli_query($conexao, $consultaFaltasMD);
+   $FaltasMD = mysqli_fetch_array($resultado_FaltasMD);
+   
+   $consultaPresencaMD= "SELECT presenca FROM faltas WHERE ra = 16 AND idturma = 11";
+   $resultado_PresencaMD = mysqli_query($conexao, $consultaPresencaMD);
+   $PresencaMD = mysqli_fetch_array($resultado_PresencaMD);
+   
+   // calculo Frequencia 
+   $presencasMD = (int)$PresencaMD['presenca'];
+   $faltasMD = (int)$FaltasMD['falta'];
+   
+
+   $total_aulasMD = $presencasMD + $faltasMD;
+   
+   // Calculo da frequência em porcentagem
+   $frequencia_percentualMD = ($presencasMD / $total_aulasMD) * 100;
 ?> 
         <div class="card-container">
             <div class="card">
@@ -1047,8 +1257,8 @@
     
                     <div class="card-info">
                         <p>Media final: <?php echo $MediaFinalMD['MediaFinal']; ?></p>
-                        <p>Faltas:**</p>
-                        <p>% Frequência: **</p>
+                        <p>Faltas: <?php echo $faltasMD; ?></p>
+                        <p>% Frequência: <?php echo number_format($frequencia_percentualMD, 2) . "%"; ?></p>
                     </div>
                     <div class="card-table">
                         <table>
