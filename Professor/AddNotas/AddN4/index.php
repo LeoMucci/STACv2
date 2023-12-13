@@ -86,7 +86,7 @@
                     <li class="nav-link">
                         <a href="../../AddFaltas/TurmasFalta/index.php">
                             <i class='bx bx-calendar-check icon'></i>
-                            <span class="text nav-text">Faltas</span>
+                            <span class="text nav-text">Chamada</span>
                         </a>
                     </li>
                 </class>

@@ -86,7 +86,7 @@
                         <a href="../TurmasFalta/index.php" style="
                         background-color: var(--primary-color);">
                             <i class='bx bx-calendar-check icon'></i>
-                            <span class="text nav-text">Faltas</span>
+                            <span class="text nav-text">Chamada</span>
                         </a>
                     </li>
                 </class>
